@@ -22,7 +22,6 @@
 
 ### Association
 - has_one :adressee,dependent: :destroy
-- has_one :credit_card,dependent: :destroy
 - has_many :items,dependent: :destroy
 
 
@@ -97,22 +96,6 @@
 
 ### Association
 - belongs_to :user
-
-
-## credit_cardsテーブル
-|Column|Type|Options|
-|------|----|-------|
-## user_id
-|user_id|references|null: false, foreign_key: true|
-## カード番号
-|card_num|integer|null: false, foreign_key: true|
-## 有効期限
-|expiration_dateinteger|null: false, foreign_key: true| 
-## セキュリティコード
-|security_code|null: false, foreign_key: true| 
-
-### Association
-- belongs_to: user
 
 
 ## categorysテーブル
