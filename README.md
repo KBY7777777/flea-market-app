@@ -1,24 +1,139 @@
-# README
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+## ニックネーム
+|nickname|string|null: false|
+## メールアドレス
+|mail	|string|null: false|default: “”|
+## パスワード
+|password|string|null: false|default: “”|
+## パスワード確認
+|encrypted_password|string|null: false|default: “”|
+## ユーザーの苗字
+|family_name|string|null: false|
+## ユーザーの名前
+|first_name|string|null: false|
+## ユーザーの苗字のふりがな
+|familyname_furigana|string|null: false|
+## ユーザーの名前のふりがな
+|firstname_furigana|string|null: false|
+## 生年月日
+|date |string|null: false|
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Association
+- has_one :adress,dependent: :destroy
+- has_many :items,dependent: :destroy
+- has_one :purchase_management
 
-Things you may want to cover:
 
-* Ruby version
+## itemsテーブル
+|Column|Type|Options|
+|------|----|-------|
+## 商品名
+|nickname|string|null: false|
+## 商品の説明
+|item_text|text|null: false|
+## カテゴリー
+|category_id|references|null: false,foreign_key:true|
+## ブランド
+|brand_id|references|null: false,foreign_key:true|
+## 商品の状態
+|item_status_id(active_hash)|integer|null: false|
+## 配送料の負担
+|delivery_charge_id(active_hash)|integer|null: false|
+## 配送元の地域
+|delivery_area_id(active_hash)|integer|null: false|
+## 配送までの日数
+|delivery_day_id(active_hash)|integer|null: false|
+## 価格
+|price|integer|null: false|
+## user_id（売り手）
+|user_id|references|null: false,foreign_key:true|
 
-* System dependencies
+### Association
+- belongs_to :user
+- belongs_to :category
+- belongs_to :brand
+- has_many :item_images,dependent: :destroy
+- belongs_to_active_hash :item_status
+- belongs_to_active_hash :delivery_charge
+- belongs_to_active_hash :delivery_area
+- belongs_to_active_hash :delivery_day
+- has_one :purchase_management
 
-* Configuration
 
-* Database creation
+## item_imagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+## item_id
+|item_id|references|null: false, foreign_key: true|
+## url
+|url|string|null: false|
 
-* Database initialization
+### Association
+- belongs_to :item
 
-* How to run the test suite
+## purchase_managementテーブル
+|Column|Type|Options|
+|------|----|-------|
+## user_id（買い手）
+|user_id|references|null: false, foreign_key: true|
+## item_id
+|item_id|references|null: false, foreign_key: true|
 
-* Services (job queues, cache servers, search engines, etc.)
+Association
+belongs_to:user
+belongs_to:item
 
-* Deployment instructions
 
-* ...
+## adresseesテーブル
+|Column|Type|Options|
+|------|----|-------|
+## user_id
+|user_id|references|null: false, foreign_key: true|
+## 送付先名字
+|destination_family_name|string|null: false|
+## 送付先名前
+|destination_first_name|string|null: false|
+## 送付先名字ふりがな
+|destination_family_name_furigana|string|null: false|
+## 送付先名字ふりがな
+|destination_first_name_furigana|string|null: false|
+## 郵便番号
+|postal_code|integer(7)|null: false|
+## 都道府県
+|prefectures_area|integer|null: false|default:""|
+## 市区町村
+|municipality|string|null: false|
+## 番地
+|house_number|string|null: false|
+## マンション名やビル名、部屋番号（任意）
+|house_number|string|
+## お届け先電話番号（任意）
+|tel|string|unique: true|
+
+### Association
+- belongs_to :user
+
+
+## categorysテーブル
+|Column|Type|Options|
+|------|----|-------|
+## name
+|name|string|null: false|
+## ancestry
+|ancestry|string|null: false|
+
+### Association
+- has_many :items
+
+
+## brandsテーブル
+|Column|Type|Options|
+|------|----|-------|
+## name
+|name|string|null: false|
+
+### Association
+- has_many :items
+
