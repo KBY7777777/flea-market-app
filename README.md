@@ -21,8 +21,9 @@
 |date |string|null: false|
 
 ### Association
-- has_one :adressee,dependent: :destroy
+- has_one :adress,dependent: :destroy
 - has_many :items,dependent: :destroy
+- has_one :purchase_management
 
 
 ## itemsテーブル
@@ -37,13 +38,13 @@
 ## ブランド
 |brand_id|references|null: false,foreign_key:true|
 ## 商品の状態
-|item_status_id|integer|null: false|
+|item_status_id(active_hash)|integer|null: false|
 ## 配送料の負担
-|delivery_charge_id|integer|null: false|
+|delivery_charge_id(active_hash)|integer|null: false|
 ## 配送元の地域
-|delivery_area_id|integer|null: false|
+|delivery_area_id(active_hash)|integer|null: false|
 ## 配送までの日数
-|delivery_day_id|integer|null: false|
+|delivery_day_id(active_hash)|integer|null: false|
 ## 価格
 |price|integer|null: false|
 ## user_id（売り手）
@@ -58,6 +59,7 @@
 - belongs_to_active_hash :delivery_charge
 - belongs_to_active_hash :delivery_area
 - belongs_to_active_hash :delivery_day
+- has_one :purchase_management
 
 
 ## item_imagesテーブル
@@ -70,6 +72,18 @@
 
 ### Association
 - belongs_to :item
+
+## purchase_managementテーブル
+|Column|Type|Options|
+|------|----|-------|
+## user_id（買い手）
+|user_id|references|null: false, foreign_key: true|
+## item_id
+|item_id|references|null: false, foreign_key: true|
+
+Association
+belongs_to:user
+belongs_to:item
 
 
 ## adresseesテーブル
@@ -123,37 +137,3 @@
 ### Association
 - has_many :items
 
-## item_statuses(active_hash)
-|Column|Type|Options|
-|------|----|-------|
-|tem_status|string|null: false|
-
-Association
-belongs_to: item
-
-
-## delivery_charges(active_hash)
-|Column|Type|Options|
-|------|----|-------|
-|delivery_charge|string|null: false|
-
-Association
-belongs_to: item
-
-
-## delivery_areas(active_hash)
-|Column|Type|Options|
-|------|----|-------|
-|delivery_area|string|null: false|
-
-Association
-belongs_to: item
-
-
-## delivery_days(active_hash)
-|Column|Type|Options|
-|------|----|-------|
-|delivery_day|string|null: false|
-
-Association
-belongs_to: item
