@@ -54,6 +54,10 @@
 - belongs_to :category
 - belongs_to :brand
 - has_many :item_images,dependent: :destroy
+- belongs_to_active_hash :item_status
+- belongs_to_active_hash :delivery_charge
+- belongs_to_active_hash :delivery_area
+- belongs_to_active_hash :delivery_day
 
 
 ## item_imagesテーブル
@@ -118,3 +122,38 @@
 
 ### Association
 - has_many :items
+
+## item_statuses(active_hash)
+|Column|Type|Options|
+|------|----|-------|
+|tem_status|string|null: false|
+
+Association
+belongs_to: item
+
+
+## delivery_charges(active_hash)
+|Column|Type|Options|
+|------|----|-------|
+|delivery_charge|string|null: false|
+
+Association
+belongs_to: item
+
+
+## delivery_areas(active_hash)
+|Column|Type|Options|
+|------|----|-------|
+|delivery_area|string|null: false|
+
+Association
+belongs_to: item
+
+
+## delivery_days(active_hash)
+|Column|Type|Options|
+|------|----|-------|
+|delivery_day|string|null: false|
+
+Association
+belongs_to: item
