@@ -8,8 +8,7 @@
 
     -#アプリロゴ部分
     %h1.Icon
-      %a{href: "/"}
-        = image_tag "/logo.png"
+      = link_to image_tag "/logo.png"
 
     -#検索ワード入力部分
     .SearchBox
@@ -29,42 +28,41 @@
       %li.ListsLeft__Item.ListsLeft__Item--First
 
         -#「カテゴリー」タブ
-        %a#catBtn{href: "#"} カテゴリー
-
+        = link_to "カテゴリー", "#", id: "catBtn"
 
          -#（トップページビュー作成当初は非表示としておく。追ってイベント発火対応にて表示させる予定）
         .Tree.displayNone
           %ul.CategoryTree
             %li.CategoryTree--Item
-              %a#1{href: "#"} レディース
+              = link_to "レディース", "#", id: "1"
             %li.CategoryTree--Item
-              %a#2{href: "#"} メンズ
+              = link_to "メンズ", "#", id: "2"
             %li.CategoryTree--Item
-              %a#3{href: "#"} ベビー・キッズ
+              = link_to "ベビー・キッズ", "#", id: "3"
             %li.CategoryTree--Item
-              %a#4{href: "#"} インテリア・住まい・小物
+              = link_to "インテリア・住まい・小物", "#", id: "4"
             %li.CategoryTree--Item
-              %a#5{href: "#"} 本・音楽・ゲーム
+              = link_to "本・音楽・ゲーム", "#", id: "5"
             %li.CategoryTree--Item
-              %a#6{href: "#"} おもちゃ・ホビー・グッズ
+              = link_to "おもちゃ・ホビー・グッズ", "#", id: "6"
             %li.CategoryTree--Item
-              %a#7{href: "#"} コスメ・香水・美容
+              = link_to "コスメ・香水・美容", "#", id: "7"
             %li.CategoryTree--Item
-              %a#8{href: "#"} 家電・スマホ・カメラ
+              = link_to "家電・スマホ・カメラ", "#", id: "8"
             %li.CategoryTree--Item
-              %a#9{href: "#"} スポーツ・レジャー
+              = link_to "スポーツ・レジャー", "#", id: "9"
             %li.CategoryTree--Item
-              %a#10{href: "#"} ハンドメイド
+              = link_to "ハンドメイド", "#", id: "10"
             %li.CategoryTree--Item
-              %a#11{href: "#"} チケット
+              = link_to "チケット", "#", id: "11"
             %li.CategoryTree--Item
-              %a#12{href: "#"} 自動車・オートバイ
+              = link_to "自動車・オートバイ", "#", id: "12"
             %li.CategoryTree--Item
-              %a#13{href: "#"} その他
+              = link_to "その他", "#", id: "13"
 
       -#「ブランド」タブ
       %li.ListsLeft__Item
-        %a#brandBtn{href: "#"} ブランド
+        = link_to "ブランド", "#", id: "brandBtn"
         %ul.brandsPulldown.displayNone
 
     -#「ログイン」ボタン + 「新規会員登録」ボタン
@@ -72,10 +70,10 @@
 
       -#「ログイン」ボタン
       %li.ListsRight__Item.ListsRight__Item--Login
-        %a{href: "#"} ログイン
+        = link_to "ログイン", "#"
 
       -#「新規会員登録」ボタン
       %li.ListsRight__Item.ListsRight__Item--New
-        %a{href: "#"} 新規会員登録
+        = link_to "新規会員登録", "#"
 
 

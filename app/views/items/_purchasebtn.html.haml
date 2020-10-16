@@ -1,7 +1,7 @@
 !!!
 
 -#画面右下「出品する」ボタンの部分テンプレート（複数の画面で「出品する」ボタンを表示するため）
-%a{:href => "#"}
+= link_to "#" do
   .PurchaseBtn
     %span.PurchaseBtn__Text 出品する
     = image_tag "/icon_camera.png", class: "PurchaseBtn__Icon"

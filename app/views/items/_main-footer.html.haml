@@ -6,10 +6,8 @@
     %h2.Inner__Title だれでもかんたん、人生を変えるフリマアプリ
     %p.Inner__Text 今すぐ無料ダウンロード！
     .Inner__Icon
-      %a.AppleBtn{href: "#"}
-        %img{src: "https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2016-06-01&kind=iossoftware&bubble=ios_apps"}
-      %a.GoogleBtn{href: "#"}
-        %img{src:"https://play.google.com/intl/ja_jp/badges/static/images/badges/ja_badge_web_generic.png"}
+      = link_to image_tag "https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2016-06-01&kind=iossoftware&bubble=ios_apps", class: "AppleBtn"
+      = link_to image_tag "https://play.google.com/intl/ja_jp/badges/static/images/badges/ja_badge_web_generic.png", class: "Google"
 
 
 -#Footer部分
@@ -21,34 +19,34 @@
       %h2.Content__Head FURIMAについて
       %ul
         %li
-          %a{:href => "#"} 会社概要（運営会社）
+          = link_to "会社概要（運営会社）"
         %li
-          %a{:href => "#"} プライバシーポリシー
+          = link_to "プライバシーポリシー"
         %li
-          %a{:href => "#"} FURIMA利用規約
+          = link_to "FURIMA利用規約"
         %li
-          %a{:href => "#"} ポイントに関する特約
+          = link_to "ポイントに関する特約"
     %li.Content
       %h2.Content__Head FURIMAを見る
       %ul
         %li
-          %a{:href => "#"} カテゴリー一覧
+          = link_to "カテゴリー一覧"
         %li
-          %a{:href => "#"} ブランド一覧
+          = link_to "ブランド一覧"
     %li.Content
       %h2.Content__Head ヘルプ＆ガイド
       %ul
         %li
-          %a{:href => "#"} FURIMAガイド
+          = link_to "FURIMAガイド"
         %li
-          %a{:href => "#"} FURIMAロゴ利用ガイドライン
+          = link_to "FURIMAロゴ利用ガイドライン"
         %li
-          %a{:href => "#"} お知らせ
+          = link_to "お知らせ"
 
   -#Footerのロゴ部分
   .Footer__Logo
-    %a{:href => "/"}
-      = image_tag "/logo-white.png"
+    = link_to image_tag "/logo-white.png"
+
   %p © FURIMA
 
 
