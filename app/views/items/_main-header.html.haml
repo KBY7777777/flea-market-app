@@ -1,0 +1,79 @@
+!!!
+
+-#アプリロゴ + 検索ワード入力部分 + アプリ内リンクボタン
+.HeaderInner
+
+  -#アプリロゴ + 検索ワード入力部分
+  .MainHeader
+
+    -#アプリロゴ部分
+    %h1.Icon
+      = link_to image_tag "/logo.png"
+
+    -#検索ワード入力部分
+    .SearchBox
+      %form{"accept-charset" => "UTF-8", action: "#", method: "get"}
+        %input{name: "utf8", type: "hidden", value: "✓"}/
+        %input#searchInput.SearchBox--Input{name: "key", placeholder: "キーワードから探す"}/
+        %button{type: "submit"}
+          .SearchBox__icon
+            = image_tag "/icon-search01.png"
+        %input{name: "authenticity_token", type: "hidden", value: "rFAVK6ThBFXDme3UNmP0GvpreyvFtpN9Ggiev5vIwglLY6sJKlvXi67kSRdmj60FTqiJjgSUtRSsP/qrzMDkAg=="}/
+
+  -#アプリ内リンクボタン
+  .Nav
+
+    -#「カテゴリー」タブ + 「ブランド」タブ
+    %ul.ListsLeft
+      %li.ListsLeft__Item.ListsLeft__Item--First
+
+        -#「カテゴリー」タブ
+        = link_to "カテゴリー", "#", id: "catBtn"
+
+         -#（トップページビュー作成当初は非表示としておく。追ってイベント発火対応にて表示させる予定）
+        .Tree.displayNone
+          %ul.CategoryTree
+            %li.CategoryTree--Item
+              = link_to "レディース", "#", id: "1"
+            %li.CategoryTree--Item
+              = link_to "メンズ", "#", id: "2"
+            %li.CategoryTree--Item
+              = link_to "ベビー・キッズ", "#", id: "3"
+            %li.CategoryTree--Item
+              = link_to "インテリア・住まい・小物", "#", id: "4"
+            %li.CategoryTree--Item
+              = link_to "本・音楽・ゲーム", "#", id: "5"
+            %li.CategoryTree--Item
+              = link_to "おもちゃ・ホビー・グッズ", "#", id: "6"
+            %li.CategoryTree--Item
+              = link_to "コスメ・香水・美容", "#", id: "7"
+            %li.CategoryTree--Item
+              = link_to "家電・スマホ・カメラ", "#", id: "8"
+            %li.CategoryTree--Item
+              = link_to "スポーツ・レジャー", "#", id: "9"
+            %li.CategoryTree--Item
+              = link_to "ハンドメイド", "#", id: "10"
+            %li.CategoryTree--Item
+              = link_to "チケット", "#", id: "11"
+            %li.CategoryTree--Item
+              = link_to "自動車・オートバイ", "#", id: "12"
+            %li.CategoryTree--Item
+              = link_to "その他", "#", id: "13"
+
+      -#「ブランド」タブ
+      %li.ListsLeft__Item
+        = link_to "ブランド", "#", id: "brandBtn"
+        %ul.brandsPulldown.displayNone
+
+    -#「ログイン」ボタン + 「新規会員登録」ボタン
+    %ul.ListsRight
+
+      -#「ログイン」ボタン
+      %li.ListsRight__Item.ListsRight__Item--Login
+        = link_to "ログイン", "#"
+
+      -#「新規会員登録」ボタン
+      %li.ListsRight__Item.ListsRight__Item--New
+        = link_to "新規会員登録", "#"
+
+

@@ -1,2 +1,264 @@
-%h1 Items#index
-%p Find me in app/views/items/index.html.haml
+-#初期設定時の記述（念のため保管）
+-# %h1 Items#index
+-# %p Find me in app/views/items/index.html.haml
+
+!!!
+%header.Header
+
+  -#Header部分（部分テンプレートで参照）
+  = render partial: "main-header"
+
+
+-#Header-Footer間の全部
+%Main
+
+  -#MainVisual部分（「人生を変えるフリマアプリ」）
+  %section.MainVisual
+    .Content
+      %h2.Content__Subtitle
+        %br/
+        人生を変えるフリマアプリ
+      %p.Content__Text
+        FURIMAはだれでもかんたんに出品・購入できる
+        %br/
+        フリマアプリです
+      .Content__Btn
+        = link_to image_tag "https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2016-06-01&kind=iossoftware&bubble=ios_apps", class: "AppleBtn"
+        = link_to image_tag "https://play.google.com/intl/ja_jp/badges/static/images/badges/ja_badge_web_generic.png", class: "Google"
+
+
+  -#TopIntroduction部分（「FURIMAが選ばれる3つの理由」）
+  %section.TopIntroduction
+    %h2.Subtitle
+      FURIMAが選ばれる3つの理由
+    %ul.Lists
+      %li.List
+        .List__Pict
+          %span.Number 1
+          = image_tag "/pict-reason-01.jpg"
+        %h3.List__Text
+          %span 3分
+          ですぐに出品
+        %p.List__Description
+          スマホで入力するだけで簡単に出品できる！
+      %li.List
+        .List__Pict
+          %span.Number 2
+          = image_tag "/pict-reason-02.jpg"
+        %h3.List__Text
+          %span シンプル
+          で使いやすい
+        %p.List__Description
+          面倒な入力は必要なく、検索も購入もスムーズ！
+      %li.List.List--Last
+        .List__Pict
+          %span.Number 3
+          = image_tag "/pict-reason-03.jpg"
+        %h3.List__Text
+          手数料
+          %span 業界最安
+        %p.List__Description
+          最大3%でお得に出品&amp;購入！
+
+  -#MidIntroduction部分（「会員数日本一位」）
+  %section.TopMiddleDl
+    .TopMiddleDl__Inner
+      %h2.TopMiddleDl__Inner__Subtitle 会員数日本一位
+      %p.TopMiddleDl__Inner__Text
+        FURIMAは、フリマアプリで最も人気。
+        %br
+        出品・購入回数も業界最多です！
+        %br
+        ほしかったあの商品に出会えるかもしれません。
+      .TopMiddleDl__Inner__Btn
+        = link_to image_tag "https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2016-06-01&kind=iossoftware&bubble=ios_apps", class: "AppleBtn"
+        = link_to image_tag "https://play.google.com/intl/ja_jp/badges/static/images/badges/ja_badge_web_generic.png", class: "Google"
+
+  -#TopKeyFeatures部分（「FURIMAの特徴」）
+  %section.Features
+    %h2.Head FURIMAの特徴
+    .Items
+      %section.Item
+        %figure.Item__Img
+          = image_tag "/icon-01.png",class: 'FeaturesImage'
+        %h3.Item__Subtitle 簡単に売り買いできる
+        %p.Item__Detail
+          スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+      %section.Item
+        %figure.Item__Img
+          = image_tag "/icon-03.png",class:'FeaturesImage'
+        %h3.Item__Subtitle 売上金は即日振込みに対応
+        %p.Item__Detail
+          午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
+      %section.Item
+        %figure.Item__Img
+          = image_tag "/icon-04.png",class:'FeaturesImage'
+        %h3.Item__Subtitle 様々な支払いに対応
+        %p.Item__Detail
+          お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+
+
+  %section.PickupContainer
+    -#PickupContainer部分（「ピックアップカテゴリー」）
+    %h2.Head ピックアップカテゴリー
+    .ProductBox
+      .ProductHead
+        = link_to "新規投稿商品", "#", class: "Title"
+
+      .ProductLists
+        .ProductList
+          = link_to "#", class:"a" do
+            .ProductList--img
+              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/18/beef.JPG", class: "img"
+            .ProductList--body
+              %h3.Name テスト
+              .Details
+                %ul
+                  %li 10000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                    1
+                %p (税込)
+
+        .ProductList
+          = link_to "#", class:"a" do
+            .ProductList--img
+              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/16/IMG_9072.JPG", class: "img"
+            .ProductList--body
+              %h3.Name ee
+              .Details
+                %ul
+                  %li 1000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                    4
+                %p (税込)
+
+        .ProductList
+          = link_to "#", class:"a" do
+            .ProductList--img
+              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", class: "img"
+            .ProductList--body
+              %h3.Name product3
+              .Details
+                %ul
+                  %li 30000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                    1
+                %p (税込)
+
+        .ProductList
+          = link_to "#", class:"a" do
+            .ProductList--img
+              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "img"
+            .ProductList--body
+              %h3.Name product2
+              .Details
+                %ul
+                  %li 20000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                    0
+                %p (税込)
+
+        .ProductList
+          = link_to "#", class:"a" do
+            .ProductList--img
+              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png", class: "img"
+            .ProductList--body
+              %h3.Name product1
+              .Details
+                %ul
+                  %li 10000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                    1
+                %p (税込)
+
+    -#PickupContainer部分（「ピックアップブランド」）
+    %h2.Head ピックアップブランド
+    .ProductBox
+      .ProductHead
+        = link_to "アーカイバ", "#", class: "Title"
+      .ProductLists
+        .ProductList
+          = link_to "#", class:"a" do
+            .ProductList--img
+              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/18/beef.JPG", class: "img"
+            .ProductList--body
+              %h3.Name テスト
+              .Details
+                %ul
+                  %li 10000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                    1
+                %p (税込)
+
+        .ProductList
+          = link_to "#", class:"a" do
+            .ProductList--img
+              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/16/IMG_9072.JPG", class: "img"
+            .ProductList--body
+              %h3.name ee
+              .Details
+                %ul
+                  %li 1000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                    4
+                %p (税込)
+
+        .ProductList
+          = link_to "#", class:"a" do
+            .ProductList--img
+              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", class: "img"
+            .ProductList--body
+              %h3.Name product3
+              .Details
+                %ul
+                  %li 30000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                    1
+                %p (税込)
+
+
+        .ProductList
+          = link_to "#", class:"a" do
+            .ProductList--img
+              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "img"
+            .ProductList--body
+              %h3.Name product2
+              .Details
+                %ul
+                  %li 20000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                    0
+                %p (税込)
+
+        .ProductList
+          = link_to "#", class:"a" do
+            .ProductList--img
+              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png", class: "img"
+            .ProductList--body
+              %h3.name product1
+              .Details
+                %ul
+                  %li 10000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                    1
+                %p (税込)
+
+
+-#Banner部分+Footer部分（部分テンプレートで参照）
+= render partial: "main-footer"
+
+
+-#右下の「出品する」ボタン（部分テンプレートで参照）
+= render partial: "purchasebtn"
+
+
