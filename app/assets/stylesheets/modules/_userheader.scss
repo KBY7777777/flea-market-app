@@ -1,0 +1,88 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+// //ここから、ユーザーログイン画面の装飾
+//ここから、ユーザー新規登録画面01の装飾
+.Single-Header {
+  text-align: center;
+  padding-top: 20px;
+  height: 90px;
+
+  .Furima-Logo {
+    display: inline-block;
+    width: 185px;    //やや小さかったので、120pxから変更（実物メルカリのロゴサイズ）
+    height: 49px;    //やや小さかったので、33pxから変更（実物メルカリのロゴサイズ）
+    margin: 0 8px 0 0;
+  }
+
+  //以下は、ユーザー新規登録画面の進捗表示の装飾
+  &__Bar li {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    min-width: 100px;
+    margin: 0 % 0 0;
+    font-size: 12px;
+    color: #888;
+  }
+
+  &__Bar {
+    padding: 8px 0;
+    text-align: center;
+
+    .Progress-Status {
+      width: 12px;
+      height: 12px;
+      margin: 8px auto 0;
+      background-color: #ccc;
+      border-radius: 50%;
+    }
+
+    .Active {
+      background: #ea352d;
+    }
+  }
+}
+
+
+.First:before {
+  position: absolute;
+  bottom: 5px;
+  z-index: -1;
+  display: block;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: #ccc;
+}
+
+.Second:before,.Secoud:after {
+  position: absolute;
+  bottom: 5px;
+  z-index: -1;
+  display: block;
+  content: '';
+  width: 120%;
+  height: 2px;
+  background: #ccc;
+}
+
+.Therd:after {
+  position: absolute;
+  bottom: 5px;
+  z-index: -1;
+  display: block;
+  content: '';
+  width: 50%;
+  height: 2px;
+  background: #ccc;
+}
+
+

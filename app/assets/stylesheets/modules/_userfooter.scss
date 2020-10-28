@@ -1,0 +1,36 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+//ここから、ユーザーログイン画面の装飾
+//ここから、ユーザー新規登録画面01の装飾
+.Clearfix__Footer{
+  margin-bottom: 20px;
+}
+
+.Clearfix__Footer a {
+  display: block;
+  color: #333;
+  text-decoration: none;
+}
+
+.Clearfix__Footer li{
+  display: inline-block;
+  padding: 0 7px;
+  font-size: 12px;
+}
+
+img.Furima-Logo {
+  display: inline-block;
+  width: 120px;    //実物メルカリのロゴサイズ
+  height: 33px;    //実物メルカリのロゴサイズ
+  margin: 0 8px 0 0;
+}
+
+
