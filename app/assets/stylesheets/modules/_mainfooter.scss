@@ -1,0 +1,104 @@
+// Place all the styles related to the sells controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+aside.Banner {    //Footer直上のバナー部分の装飾
+  background-image: url(/bg-appBanner-pict.jpg);
+  padding: 100px 40px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+
+  .Inner {
+    color: #fff;
+    text-align: center;
+
+    &__Title {
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 1.4;
+    }
+
+    &__Text {
+      font-size: 35px;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    }
+
+    &__Icon {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 20px auto 0;
+
+      .AppleBtn {
+        vertical-align: bottom;
+        width: 180px;
+      }
+
+      .GoogleBtn {
+        width: 205px;
+        margin-top: -12px;
+      }
+    }
+  }
+}
+
+
+.Footer {    //トップページ下部の黒地のリンク集部分
+  padding: 60px 0;
+  color: #fff;
+  background-color: #272727;
+  text-align: center;
+
+  .Contents {
+    max-width: 840px;
+    margin: 0 auto;
+    display: flex;
+
+    .Content {
+      display: flex;
+      flex-direction: column;
+      width: calc(1 / 3 * 100%);
+      margin: 0 2% 0 0;
+
+      &__Head {
+        margin: 0 0 20px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      li {
+         a {
+          color: #fff;
+          text-decoration: none;
+          font-size: 12px;
+          line-height: 32px;
+        }
+      }
+    }
+  }
+
+  &__Logo {
+    max-width: 160px;
+    width: 100%;
+    margin: 0 auto;
+
+    img.MainFooterLogo {
+      width: 100%;
+      vertical-align: bottom;
+    }
+  }
+
+  p {
+    font-size: 14px;
+  }
+}
+
+

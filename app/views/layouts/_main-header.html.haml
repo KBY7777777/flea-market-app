@@ -8,7 +8,7 @@
 
     -#アプリロゴ部分
     %h1.Icon
-      = link_to image_tag "/logo.png"
+      = link_to image_tag "/logo.png", class: "MainHeaderLogo"
 
     -#検索ワード入力部分
     .SearchBox
@@ -17,7 +17,7 @@
         %input#searchInput.SearchBox--Input{name: "key", placeholder: "キーワードから探す"}/
         %button{type: "submit"}
           .SearchBox__icon
-            = image_tag "/icon-search01.png"
+            = image_tag "/icon-search01.png", class: "SearchBtnIcon"
         %input{name: "authenticity_token", type: "hidden", value: "rFAVK6ThBFXDme3UNmP0GvpreyvFtpN9Ggiev5vIwglLY6sJKlvXi67kSRdmj60FTqiJjgSUtRSsP/qrzMDkAg=="}/
 
   -#アプリ内リンクボタン

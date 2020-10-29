@@ -1,8 +1,18 @@
 Rails.application.routes.draw do
   root 'items#index'
 
-  get "users/login" => "users#login"    #ユーザーログイン画面の表示
-  get "items/purchase" => "items#purchase"    #商品購入確認画面の表示
-  get "items/sell" => "items#sell"    #商品出品画面の表示
+  resources :items do    #商品情報関連の「items」controllerに対応
+    collection do
+      get 'purchase'    #商品購入確認ページ
+      get 'sell'    #商品出品ページ
+      get 'item_details'    #商品詳細ページ
+    end
+  end
+
+  resources :users do    #ユーザー情報関連の「users」controllerに対応
+    collection do
+      get 'login'    #ログインページ
+    end
+  end
 
 end
