@@ -1,0 +1,70 @@
+-#商品購入確認ページ
+
+.Purchase
+
+  = render partial: '/layouts/userheader'
+
+  .Purchase-Verification
+    .Title
+      %section.Purchase-Common
+        %h2{"data-test": "transaction-buy-site-title"} 購入内容の確認
+      %section.Purchase-Common
+        .Purchase-Content
+          .Image
+            %figure.Image-Frame
+              = image_tag "https://static.mercdn.net/item/detail/orig/photos/m36272311004_1.jpg?1602627007"
+          .Text
+            %p.Text__Name 新品 高級 トート バッグ ショルダー 鞄 茶色 男性 女性 メンズ レディース
+            %p.Text__Money
+              %span.Text__Money__Shipping 送料込み (税込)
+              %span.Text__Money__Number ¥2,980
+      %section.Purchase-Common
+        .Money-Zone
+          %span 支払い金額
+          %span.Money-Zone__Number{"data-test": "transaction-buy-price-label"} ¥2,980
+        %label.Point
+          %label.Point-Zone{disabled: "disabled"}
+            %span.Point-Zone__Sub
+              %span.Point-Zone__Sub__Left
+                %input{disabled: "disabled", name: "use-d-points", type: "checkbox", value: ""}/
+                %svg{"aria-hidden": "true", fill: "#ffffff", "fill-rule": "evenodd", height: "16", viewbox: "0 0 24 24", width: "16"}
+                  %path{d: "M9.21,18.09a1.52,1.52,0,0,1-1.09-.44l-5-5a.71.71,0,0,1,0-1,.69.69,0,0,1,1,0l5,5a.26.26,0,0,0,.33-.07L19.92,6.11a.7.7,0,0,1,1,1L10.43,17.58A1.72,1.72,0,0,1,9.21,18.09Z"}
+            = image_tag "https://web-jp-assets.mercdn.net/_next/static/images/icon-d-point-b6fd5f328cf7f7b28fd6e84b1b4062d5.svg", class:"sc-cmUJln.brDdlF"
+            %p.Point-Text{disabled: "disabled"} dポイント
+          = link_to "dアカウント連携", "/jp/mypage/connection/docomo/start?callback=%2Fjp%2Ftransaction%2Fbuy%2Fm36272311004%2F/", class: "Point-Btn"
+        %label.Point
+          %label.Point-Zone{disabled: "disabled"}
+            %span.Point-Zone__Sub{"data-test": "transaction-buy-mercari-point-checkbox"}
+              %span.Point-Zone__Sub__Left
+                %input{disabled: "disabled", name: "use-mercari-points", type: "checkbox", value: ""}/
+                %svg{"aria-hidden": "true", fill: "#ffffff", "fill-rule": "evenodd", height: "16", viewbox: "0 0 24 24", width: "16"}
+                  %path{d: "M9.21,18.09a1.52,1.52,0,0,1-1.09-.44l-5-5a.71.71,0,0,1,0-1,.69.69,0,0,1,1,0l5,5a.26.26,0,0,0,.33-.07L19.92,6.11a.7.7,0,0,1,1,1L10.43,17.58A1.72,1.72,0,0,1,9.21,18.09Z"}
+            =image_tag "https://web-jp-assets.mercdn.net/_next/static/images/icon-mercari-point-1da76e8760639b3454f14e979fbb7ca1.svg", class:"sc-cmUJln.brDdlF"
+            %p.Point-Text{disabled: "disabled"} ポイント
+          %p.Point-Possession 所持ポイント : P0
+      %section.Purchase-Common
+        .Purchase-Secondary
+          .Purchase-Secondary__Up
+            %h3.Purchase-Secondary__Up__Text 支払い方法
+          .Purchase-Secondary__Down
+            =link_to "+登録してください", "#",  class: "Purchase-Secondary-Btn" 
+      %section.Purchase-Common
+        .Purchase-Secondary
+          .Purchase-Secondary__Up
+            %h3.Purchase-Secondary__Up__Text 配送先
+          .Purchase-Secondary__Down
+            =link_to "+登録してください", "#",  class: "Purchase-Secondary-Btn" 
+      %section.Purchase-Common
+        .Purchase-Tertiary
+          %p
+            郵便局/コンビニ受取をご希望の方は、購入後に
+            %b 取引画面
+            から受取場所を変更をすることが可能です。出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください。
+          %p.Caution 支払い方法の入力を完了してください。
+          %p.Caution  配送先の入力を完了してください。
+          %button{"data-test": "transaction-buy-purchase", disabled: "disabled", tabindex: "-1", type: "button"} 購入する
+
+%footer.Single-Footer
+  = render partial: '/layouts/userfooter'
+
+

@@ -631,3 +631,290 @@
 }
 
 
+//ここから、商品購入確認画面（=sells/purchase.html）の装飾
+.Purchase {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: rgb(245, 245, 245);
+
+  .Purchase-Verification {
+    background-color: rgb(255, 255, 255);
+    max-width: 700px;
+    margin: 0px auto;
+    width: 100%;
+
+    .Title {
+
+      .Purchase-Common {
+        margin: 0px auto;
+        padding: 32px 16px;
+        max-width: 375px;
+        border-top: 1px solid rgb(245, 245, 245);
+
+        h2 {
+          display: block;
+          text-align: center;
+          font-size: 24px;
+          line-height: 34px;
+          font-weight: 600;
+        }
+
+        .Purchase-Content {
+          display: flex;
+          -webkit-box-pack: justify;
+          justify-content: space-between;
+
+          .Image {
+            display: flex;
+            -webkit-box-pack: center;
+            justify-content: center;
+            height: 80px;
+            width: 80px;
+            -webkit-box-align: center;
+            align-items: center;
+
+            .Image-Frame {
+              height: 80px;
+              width: 80px;
+              border-radius: 4px;
+              display: inline-block;
+              overflow: hidden;
+              margin: 0;    //これを追記しないと効かない（画像が表示されない）
+
+              img {
+                height: 100%;
+                object-fit: cover;
+                transition-duration: .1s;
+                transition-property: opacity;
+                transition-timing-function: ease-in-out;
+                width: 100%;
+              }
+            }
+          }
+
+          .Text {
+            width: 100%;
+            margin-left: 16px;
+
+            &__Name {
+              font-size: 14px;
+              line-height: 1.4em;
+              margin-bottom: 8px;
+            }
+
+            &__Money {
+              text-align: right;
+
+              &__Shipping {
+                font-size: 12px;
+              }
+
+              &__Number {
+                font-size: 15px;
+                font-weight: 600;
+                margin-left: 8px;
+              }
+            }
+          }
+        }
+
+
+        .Money-Zone {
+          display: flex;
+          font-size: 18px;
+          font-weight: 600;
+          -webkit-box-pack: justify;
+          justify-content: space-between;
+          -webkit-box-align: center;
+          align-items: center;
+          margin-bottom: 24px;
+
+          &__Number {
+            font-size: 24px;
+          }
+        }
+
+
+        .Point {
+          margin-top: 16px;
+          font-size: 14px;
+          display: flex;
+          -webkit-box-align: center;
+          align-items: center;
+          -webkit-box-pack: justify;
+          justify-content: space-between;
+
+          .Point-Zone {
+            cursor: not-allowed;
+
+            &__Sub {
+              color: #888;
+              cursor: default;
+              margin-right: 8px;
+              vertical-align: middle;
+              align-items: flex-start;
+              display: inline-flex;
+              font-size: 14px;
+              line-height: 20px;
+
+              &__Left {
+                display: inline-block;
+                flex: 0 0 auto;
+                height: 20px;
+                position: relative;
+                width: 20px;
+
+                input {
+                  background-color: #ccc;
+                  border-color: #ccc;
+                  cursor: default;
+                  border-radius: 2px;
+                  transition-duration: .1s;
+                  transition-timing-function: ease-in-out;
+                  appearance: none;
+                  border: 1px solid #ccc;
+                  height: 100%;
+                  margin: 0;
+                  position: absolute;
+                  transition-property: background-color,border-color;
+                  width: 100%;
+                  font-family: inherit;
+                  font-size: 100%;
+                  padding: initial;
+                  text-rendering: auto;
+                  letter-spacing: normal;
+                  word-spacing: normal;
+                  text-transform: none;
+                  text-indent: 0px;
+                  text-shadow: none;
+                  display: inline-block;
+                  text-align: start;
+                  -webkit-rtl-ordering: logical;
+                  font: 400 13.3333px Arial;
+                }
+              }
+            }
+
+            img {
+              height: 14px;
+              width: 14px;
+              margin-right: 4px;
+              opacity: 0.5;
+              vertical-align: middle;
+            }
+
+            .Point-Text {
+              display: inline-block;
+              font-weight: 600;
+              line-height: 1.4em;
+              vertical-align: middle;
+              opacity: 0.5;
+            }
+          }
+
+          .Point-Btn {
+            -webkit-box-align: center;
+            align-items: center;
+            background-color: rgb(255, 255, 255);
+            border: 1px solid rgb(234, 53, 45);
+            border-radius: 4px;
+            color: rgb(234, 53, 45);
+            display: inline-flex;
+            font-size: 14px;
+            font-weight: 600;
+            height: 32px;
+            -webkit-box-pack: center;
+            justify-content: center;
+            max-width: 164px;
+            pointer-events: auto;
+            width: 100%;
+            text-decoration: none;
+          }
+
+          .Point-Possession {
+            font-size: 12px;
+            text-align: right;
+            line-height: 1.6;
+            margin-left: 16px;
+            flex: 1 1 0%;
+          }
+        }
+
+        .Purchase-Secondary {
+
+          &__Up {
+            display: flex;
+            -webkit-box-pack: justify;
+            justify-content: space-between;
+            -webkit-box-align: center;
+            align-items: center;
+            margin-bottom: 16px;
+
+            &__Text {
+              font-size: 14px;
+              font-weight: 600;
+            }
+          }
+
+          &__Down {
+            .Purchase-Secondary-Btn {
+            color: rgb(0, 149, 238);
+            -webkit-box-align: center;
+            align-items: center;
+            opacity: 1;
+            pointer-events: auto;
+            text-decoration: none;
+            }
+          }
+        }
+
+        .Purchase-Tertiary {
+
+          p {
+            max-width: 375px;
+            color: rgb(136, 136, 136);
+            line-height: 1.5;
+            margin-bottom: 24px;
+
+            b {
+              font-weight: 600;
+            }
+          }
+
+          .Caution  {
+            color: rgb(255, 2, 17);
+            line-height: 1.5;
+            margin-bottom: 24px;
+          }
+
+          button {
+            background-color: #ccc;
+            color: #888;
+            width: 100%;
+            font-size: 17px;
+            min-height: 48px;
+            padding: 0 24px;
+            transition-duration: .1s;
+            transition-timing-function: ease-in-out;
+            border-radius: 4px;
+            border: 1px solid transparent;
+            box-sizing: border-box;
+            display: inline-block;
+            font-weight: 600;
+            line-height: 1;
+            overflow: hidden;
+            text-align: center;
+            text-decoration: none;
+            transition-property: background-color,border-color,color;
+            vertical-align: middle;
+            white-space: nowrap;
+            word-break: break-word;
+          }
+        }
+      }
+    }
+  }
+}
+
+
