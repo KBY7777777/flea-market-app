@@ -6,4 +6,7 @@ class UsersController < ApplicationController
   def login
   end
 
+  def register_signup
+  end
+
 end
