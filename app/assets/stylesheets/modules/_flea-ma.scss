@@ -11,140 +11,7 @@
 .Header {    //トップページヘッダー部分の装飾
   padding: 0 60px;
 
-  .HeaderInner {
-    max-width: 1040px;
-    width: 100%;
-    min-height: 82px;
-    margin: 0 auto;
-    padding: 15px 0 0;
-
-    .MainHeader {
-      position: relative;
-      display: flex;
-      align-items: center;
-
-      .Icon {
-        padding-bottom: 10px;
-        margin-right: 30px;
-        border-radius: 4px;
-
-        a {
-          width: 140px;
-          display: block;
-        }
-      }
-
-      .SearchBox {
-        margin-left: auto;
-        width: 100%;
-
-        form {
-          width: 100%;
-          display: flex;
-          margin-bottom: 5px;
-
-          Input {
-            width: calc(100% - 26px);
-            height: 36px;
-            padding: 0 0 0 5px;  
-          }
-
-          button {
-            width: 36px;
-            cursor: pointer;
-            background-color: #3CCACE;
-            padding: 8px;
-            border: none;
-          }
-        }
-      }
-
-      .ResultLists {
-        display: flex;
-        position: absolute;
-        right: 0;
-        top: 36px;
-        z-index: 2;
-      }
-    }
-
-    .Nav {
-      font-size: 14px;
-      display: flex;
-      margin-bottom: 10px;
-
-      .ListsLeft {
-        position: relative;
-        display: flex;
-
-        &__Item {
-          display: flex;
-          line-height: 38px;
-          padding: 0 0 0 16px;
-
-          a {
-            color: #333;
-            text-decoration: none;
-            line-height: 32px;
-            background-position: center right;
-            background-repeat: no-repeat;
-            background-size: 18px;
-            padding-right: 30px;
-          }
-
-          &--First {
-            text-decoration: none;
-            padding: 0;
-
-            >a {
-              background-image: url(/icon_category.svg);
-            }
-          }
-
-          .Tree {
-            z-index: 2;
-            position: absolute;
-            background-color: #fff;
-            width: 240px;
-            top: 40px;
-
-            .CategoryTree {
-              background-color: #fff;
-              display: flex;
-              flex-direction: column;
-              position: relative;
-
-              &--Item {
-                display: block;
-                width: 240px;
-                padding: 3px 8px 3px 5px;
-                border-bottom: 1px solid #f8f8f8;
-              }
-            }
-          }
-        }
-      }
-
-      .ListsRight {
-        margin-left: auto;
-        display: flex;
-
-        &__Item {
-          color: #333;
-          line-height: 38px;
-          padding: 0 0 0 16px;
-
-          a {
-            display: flex;
-            align-items: center;
-            color: #333;
-            text-decoration: none;
-            line-height: 32px;
-          }
-        }
-      }
-    }
-  }
+  //Headerクラス以下のトップページヘッダー部分は、部分template「mainheader.scss」で記述
 }
 
 
@@ -512,99 +379,11 @@
   }
 }
 
+//トップページフッター部分は、部分template「mailfooter.scss」で記述
 
-.Banner {    //Footer直上のバナー部分の装飾
-  background-image: url(/bg-appBanner-pict.jpg);
-  padding: 100px 40px;
-  position: relative;
-  background-size: cover;
-  background-position: center;
-
-  .Inner {
-    color: #fff;
-    text-align: center;
-
-    &__Title {
-      text-shadow: 0 0 5px rgba(0,0,0,0.4);
-      font-size: 24px;
-      font-weight: bold;
-      line-height: 1.4;
-    }
-
-    &__Text {
-      font-size: 35px;
-      text-shadow: 0 0 5px rgba(0,0,0,0.4);
-    }
-
-    &__Icon {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      margin: 20px auto 0;
-
-      .AppleBtn {
-        vertical-align: bottom;
-        width: 180px;
-      }
-
-      .GoogleBtn {
-        width: 205px;
-        margin-top: -12px;
-      }
-    }
-  }
-}
-
-
-.Footer {    //トップページ下部の黒地のリンク集部分
-  padding: 60px 0;
-  color: #fff;
-  background-color: #272727;
-  text-align: center;
-
-  .Contents {
-    max-width: 840px;
-    margin: 0 auto;
-    display: flex;
-
-    .Content {
-      display: flex;
-      flex-direction: column;
-      width: calc(1 / 3 * 100%);
-      margin: 0 2% 0 0;
-
-      &__Head {
-        margin: 0 0 20px;
-        font-size: 16px;
-        font-weight: bold;
-      }
-
-      li {
-         a {
-          color: #fff;
-          text-decoration: none;
-          font-size: 12px;
-          line-height: 32px;
-        }
-      }
-    }
-  }
-
-  &__Logo {
-    max-width: 160px;
-    width: 100%;
-    margin: 0 auto;
-
-    img {
-      width: 100%;
-      vertical-align: bottom;
-    }
-  }
-
-  p {
-    font-size: 14px;
-  }
-}
+// .Banner {    //Footer直上のバナー部分の装飾
+// .Footer {    //トップページ下部の黒地のリンク集部分
+// .PurchaseBtn {    //トップページ画面右下の「出品する」ボタン
 
 
 .PurchaseBtn {    //トップページ画面右下の「出品する」ボタン
@@ -1132,6 +911,358 @@
 .Blue-Character{
   color: #0099e8;
   text-decoration: none;
+}
+
+
+//ここから、商品詳細画面（=items/item_details.html）の装飾
+.detailsHeader {    //トップページヘッダー部分の装飾
+  padding: 0 60px;
+
+  //Headerクラス以下のトップページヘッダー部分は、部分template「mainheader.scss」で記述
+}
+
+.Item-Box-Container{
+  background: #f8f8f8;
+
+  .Item-Main-Content{
+    padding: 40px;
+    margin: 0 auto;
+
+    .Content-Leftqq{
+    }
+
+    .Content-Right{
+      width: 700px;
+      margin: 0 auto;
+
+      .Top-Content{
+        .Item-Box{
+          background-color: #fff;
+          padding: 24px 40px 40px;
+
+          &__Name{
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
+          }
+
+          &__Body{
+            margin: 16px 0 0;
+
+            .Owl-Stage-Outer{
+              display: flex;
+              position: relative;
+              list-style: none;
+
+              .Owl-Stage{
+                display: flex;
+                flex-direction: column;
+                width: 560px;
+                align-items: center;
+                margin: 0 auto;
+
+                .Owl-Lazy{
+                  object-fit: cover;
+                  height: 346px;
+                  }
+
+                  .Owl-Item-Inner{
+                  display: flex;
+                  justify-content: center;
+                  margin-top: 10px;
+
+                  .Luminous-Gallery{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    width: 25%;
+                    margin: 0 10px 0 0;
+
+                    .under-Lazy{
+                      object-fit: cover;
+                      height: 87px;
+                      width: 140px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          &__Price{
+            margin: 24px 0 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+
+            .Price{
+              font-size: 46px;
+              font-weight: bold;
+              margin: 0 10px 0 0;
+            }
+
+            .Item-Box-Price-Detail{
+              font-size: 16px;
+            }
+          }
+
+          .item-buy-btn{
+            font-size: 24px;
+            line-height: 60px;
+            display: block;
+            margin-top: 16px;
+            margin-bottom: 16px;
+            background: #ea352d;
+            color: #fff;
+            text-align: center;
+            font-weight: 600;
+            transition: all ease-out .3s;
+            text-decoration: none;
+          }
+
+          .Item-Detail{
+            line-height: 1.5;
+            font-size: 18px;
+            margin-bottom: 30px;
+          }
+
+          .Table{
+            margin-bottom: 20px;
+
+            table{
+              width: 100%;
+              height: 375px;
+              border-collapse: collapse;
+              border: 1px solid #f8f8f8;
+
+              tbody{
+                tr{
+                  th{
+                    width: 20%;
+                    background-color: #eee;
+                    font-weight: 400;
+                    padding: 8px;
+                    border: 1px solid #dedede;
+                    font-size: 14px;
+                    text-align: center;
+                  }
+
+                  td{
+                    width: 61%;
+                    padding: 15px 15px;
+                    border: 1px solid #dedede;
+                    font-size: 14px;
+                    .cate{
+                      text-decoration: none;
+                      color: #3CCACE;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .Optional-Area{
+            display: flex;
+            justify-content: space-between;
+
+            .favorite{
+              margin: 10px 0 0;
+              display: flex;
+              list-style: none;
+
+              .Like-Btn.Optional-Btn.Like-Btn{
+                margin-right: auto;
+                padding: 6px 10px;
+                border-radius: 40px;
+                color: #3CCACE;
+                border: 1px solid #ffb340;
+              }
+            }
+
+            .Optional{
+              margin: 10px 0 0;
+              display: flex;
+              list-style: none;
+
+              .Optional-Btn{
+                font-size: 14px;
+
+                .Inappropriate{
+                  padding: 6px 10px;
+                  display: inline-block;
+                  border-radius: 4px;
+                  color: #333;
+                  border: 1px solid #333;
+                  text-decoration: none;
+                }
+              }
+            }
+          }
+        }
+
+        .Comment-Box{
+          padding: 24px;
+          background-color: #fff;
+          margin: 10px 0;
+          text-align: center;
+
+          .Comment-Contents{
+            list-style: none;
+          }
+
+          .New_Comment{
+            .comment_body{
+              width: 100%;
+              min-height: 104px;
+              padding: 10px;
+            }
+
+            .Notice-Msg{
+              padding: 8px;
+              font-size: 14px;
+              background-color: #f8f8f8;
+              margin: 10px 0;
+              text-align: left;
+            }
+
+            .Comment-Btn{
+              line-height: 48px;
+              background: #3CCACE;
+              border: 1px solid #3CCACE;
+              color: #fff;
+              width: 60%;
+              font-size: 18px;
+              border-radius: 100px;
+            }
+          }
+        }
+      }
+
+      .Links{
+        .back-Btn{
+          float: left;
+
+          .link-Btn{
+            text-decoration: none;
+            color: #3CCACE;
+          }
+        }
+
+        .Next-Btn{
+          float: right;
+
+          .link-Btn{
+            text-decoration: none;
+            color: #3CCACE;
+          }
+        }
+      }
+
+      .Links::after{
+        display: block;
+        content: "";
+        clear: both;
+      }
+
+      .Related-Items{
+        .Relateds{
+          display: block;
+          margin: 24px 0 8px;
+          color: #3CCACE;
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 22px;
+          position: relative;
+        }
+
+        .ProductLists{
+          .ProductList{
+            margin: 0 0 10px;
+            float: left;
+            width: calc(100% / 3);
+
+            .User-Itme-Id{
+              display: block;
+              margin: 24px 0 8px;
+              color: #3CCACE;
+              text-decoration: none;
+              font-weight: bold;
+              font-size: 22px;
+              position: relative;
+
+              .ProductList--Img{
+                background-color: #fff;
+                width: 220px;
+                height: 150px;
+                position: relative;
+                overflow: hidden;
+                margin: 0;
+                z-index: auto;
+
+                .User-Itme-Id-img{
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  right: 0;
+                  bottom: 0;
+                  width: 100%;
+                  z-index: auto;
+                  height: 150px;
+                  object-fit: cover;
+                }
+              }
+
+              .ProductList--Body{
+                background-color: white;
+                color: #333;
+                padding: 16px;
+
+                .Name{
+                  overflow: hidden;
+                  line-height: 1.5;
+                  font-size: 16px;
+                  text-align: left;
+                }
+
+                .Details{
+                  font-size: 16px;
+
+                  ul{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    li{
+                      .fa{
+                      }
+                    }
+                  }
+
+                  p{
+                    font-size: 10px;
+                    text-align: left;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .Related-Items::after{
+        display: block;
+        content: "";
+        clear: both;
+      }
+    }
+  }
+
+  .Item-Main-Content::after{
+    display: block;
+    content: "";
+    clear: both;
+  }
 }
 
 

@@ -1,0 +1,135 @@
+-#商品詳細ページ
+
+%header.detailsHeader
+  -#Header部分（部分テンプレートで参照）
+  = render partial: "/layouts/main-header"
+
+.Item-Box-Container
+  .Item-Main-Content
+    .Content-Leftqq
+    .Content-Right
+      .Top-Content
+        .Item-Box
+          %h2.Item-Box__Name ガンプラ HG 1/144 ガンダムベース限定 百式[ゴールドコーティング]
+          .Item-Box__Body
+            %ul
+            .Owl-Stage-Outer
+              %li
+              .Owl-Stage
+                = image_tag "https://static.mercdn.net/item/detail/orig/photos/m99569362632_1.jpg?1603108542", class: "Owl-Lazy"
+                %ul
+                .Owl-Item-Inner
+                  %li
+                  .Luminous-Gallery
+                    = image_tag "https://static.mercdn.net/item/detail/orig/photos/m99569362632_2.jpg?1603108542", class: "under-Lazy"
+                  %li
+                  .Luminous-Gallery
+                    = image_tag "https://static.mercdn.net/item/detail/orig/photos/m99569362632_3.jpg?1603108542", class: "under-Lazy"
+                  %li
+                  .Luminous-Gallery
+                    = image_tag "https://static.mercdn.net/item/detail/orig/photos/m99569362632_4.jpg?1603108542", class: "under-Lazy"
+          .Item-Box__Price
+            %span
+            .Price
+              ¥5800
+            .Item-Box-Price-Detail
+              %span
+                (税込)
+              %span
+                送料込み
+          = link_to "#", class: "item-buy-btn" do
+            購入画面に進む
+          .Item-Detail 新品、未開封の状態でダンボール箱に梱包してお送りいたします。(まとめ買いして下さる場合、値引きの見積りいたしますのでコメント欄にその旨ご記入下さい。)『機動戦士Zガンダム』でクワトロ・バジーナの搭乗機として活躍した百式がゴールドコーティングとなって登場。特徴的なゴールドカラーを再現。ベストバランスのプロポーション、可動域の広さからポージングも高次元に再現可能。
+          .Table
+            %table
+              %tbody
+                %tr
+                  %th 出品者
+                  %td 渦巻鳴門
+                %tr
+                  %th カテゴリー
+                  %td
+                    = link_to "#", class: "cate" do
+                      玩具
+                    %br/
+                    = link_to "#", class: "cate" do
+                      プラモデル
+                    %br/
+                    = link_to "#", class: "cate" do
+                      ガンプラ
+                %tr
+                  %th ブランド
+                  %td 
+                %tr
+                  %th 商品のサイズ
+                  %td
+                %tr
+                  %th 商品の状態
+                  %td 新品・未使用
+                %tr
+                  %th 配送料の負担
+                  %td 送料込み（出品者負担）
+                %tr
+                  %th 発送元の地域
+                  %td
+                    = link_to "#", class: "cate" do
+                      神奈川県
+                %tr
+                  %th 発送日の目安
+                  %td 4-7日で発送
+          .Optional-Area
+            %ul.favorite
+              %li#Like-Btn.Optional-Btn.Like-Btn
+                %i.fa.fa-star
+                お気に入り 10
+            %ul
+            .Optional
+              %li.Optional-Btn
+                = link_to "#", class: "Inappropriate" do
+                  %i.fa.fa-flag
+                  不適切な商品の通報
+        .Comment-Box
+          %ul.Comment-Contents
+          %form#New_Comment.New_Comment{action: "#", method: "#"}
+            %input{type: "hidden", name: "__csrf_value", value: ""}/
+            %input{type: "hidden", name: "item_id", value: ""}/
+            %textarea#comment_body{name: "comment[body]", class: "comment_body", required: "required"}
+            %p.Notice-Msg
+              相手のことを考え丁寧なコメントを心がけましょう。
+              %br/
+              不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            %br/
+            %button.Comment-Btn{type: "submit", name: "button"}
+              %i.fa.fa-comment
+              コメントする
+      %ul.Links
+        %li.back-Btn
+          = link_to "#", class: "link-Btn" do
+            %i.fa.fa-angle-left
+            %span 前の商品
+        %li.Next-Btn
+          = link_to "#", class: "link-Btn" do
+            %span
+            後ろの商品
+            %i.fa.fa-angle-right
+      .Related-Items
+        = link_to "#", class: "Relateds" do
+          玩具をもっと見る
+        .ProductLists
+          .ProductList
+            = link_to "#", class: "User-Itme-Id" do
+              %figure.ProductList--Img
+                = image_tag "https://static.mercdn.net/item/detail/orig/photos/m49251097434_1.jpg?1603269303", class: "User-Itme-Id-img"
+              .ProductList--Body
+                %h3.Name ガンプラ RE/100 MSN-04II ナイチンゲール
+                .Details
+                  %ul
+                    %li 12500円
+                    %li
+                      %i.fa.fa-star.likeIcon
+                      4
+                  %p (税込)
+
+-#Banner部分+Footer部分（部分テンプレートで参照）
+-# = render partial: "main-footer"
+= render partial: "/layouts/main-footer"
