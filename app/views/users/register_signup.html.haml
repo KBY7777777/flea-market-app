@@ -3,9 +3,7 @@
 %body
   .Single-Container
     = render partial: "/layouts/userheader"
-    -# %header.Single-Header
-    -#   %h1
-    -#   = link_to image_tag "/logo.png",class:"Furima-Logo"
+
     %nav.Single-Header__Bar
       %ol
         %li.Active-Name
@@ -22,7 +20,6 @@
       %section.L-Single-Container
         %h2.L-Single-Container__Head 会員情報入力
         %form.L-Single-Container__Form{action: "#", method:"POST", novalidate:"novalidate"}
-          -#%input{:name => "__csrf_value", :type => "hidden", :value => "9882d600c32482052f8c7084df15483e781e35ec3163a72275e86dc70e3665b8d182b7b5a0445241291ba2698e35fb0c9e19d0a50d1baa5b3144700ca13159287"}/
           .L-Single-Container__Form__Content
             .Form-Group
               %label{for: "nickname",class:"Form-Group__Label"} ニックネーム
@@ -32,7 +29,6 @@
               %label{for: "email" ,class:"Form-Group__Label"} メールアドレス
               %span.Form-Group__Require  必須
               %input.Form-Group__Input{name: "email", placeholder: "PC・携帯どちらでも可", type: "email", value: ""}/
-            -#%input{name => "login_type", :type => "hidden", :value => ""}/
             .Form-Group
               %label{for: "password",class:"Form-Group__Label"} パスワード
               %span.Form-Group__Require 必須
@@ -42,15 +38,6 @@
               %span.Form-Group__Require 必須
               %p.Form-Group__Explanation ※確認のためもう一度ご入力ください。
               %input.Form-Group__Input{name: "encrypted_password", placeholder: "7文字以上の半角英数字", type: "password"}/
-              -#%p.Form-Group__Imfo
-                -#※ 英字と数字の両方を含めて設定してください
-              -#.Password-Revelation
-                -#.Password-Revelation__Checkbox
-                  -#%input.Password-Revelation__Checkbox__Input{type: "checkbox"}/
-                  -#%i
-                  -#%label.Password-Revelation__Checkbox__Label{for: "reveal_password"} パスワードを表示する
-                -#.form-password-revelation-revealed-password-container
-                  -#%span.form-password-revelation-revealed-password
             .Form-Group
               %h3.Form-Group__Confirmation 本人確認
               %p.Form-Group__Explanation
@@ -221,14 +208,9 @@
                     %option{value: ""} --
                 %span.Birthday-Wrap__Date 日
               %input{name: "birthday", type: "hidden", value: ""}/
-              -#.clearfix
             %p.L-Single-Container__Form__Text
               ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
           .L-Single-Container__Form__Content
-            -#%input{:name => "after_save_callback", :type => "hidden", :value => "/jp/"}/
-            -#%input#g-recaptcha-v3{:name => "g_recaptcha_response_v3", :type => "hidden"}/
-            -#%input#recaptcha-version{:name => "recaptcha_version", :type => "hidden", :value => "3"}/
-            -#%input#g-recaptcha-v3-site-key{:type => "hidden", :value => "6LelCcAUAAAAAGYBvpuT3hj7TOnrIElDM5ZsTuAy"}/
             %button.Btn-Default{type: "submit", onclick: "location.href:‘posts#index'"} 次へ進む
             .Form-Group.Text-Right
               %p
@@ -244,15 +226,5 @@
 
     %footer.Single-Footer
       = render partial: "/layouts/userfooter"
-      -# %nav
-      -#   %ul.Clearfix__Footer
-      -#     %li
-      -#       =link_to "プライバシーポリシー", "#"
-      -#     %li
-      -#       =link_to "フリマ利用規約", "#"
-      -#     %li
-      -#       =link_to "特定商取引に関する表記", "#"
-      -# = link_to image_tag "/logo.png", class:"Furima-Logo"
-      -# %p
-      -#   %small © FURIMA, Inc.
+
 
