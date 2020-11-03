@@ -1,0 +1,292 @@
+* {
+  box-sizing: border-box;
+}
+
+.Single-Container {
+  background-color: #f5f5f5;
+}
+
+.Single-Header {
+  text-align: center;
+  padding-top: 20px;
+  &__Bar li {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    min-width: 100px;
+    margin: 0 % 0 0;
+    font-size: 12px;
+    color: #888;
+  }
+  &__Bar{
+    padding: 8px 0;
+    text-align: center;
+    .Progress-Status {
+      width: 12px;
+      height: 12px;
+      margin: 8px auto 0;
+      background-color: #ccc;
+      border-radius: 50%;
+    }
+    //.Active-Name{
+      //color:#ea352d;
+    //}
+    .Active{
+      background: #ea352d;
+    }
+  }
+}
+
+.Furima-Logo{
+  display: inline-block;
+  width: 120px;
+  height: 33px;
+  margin: 0 8px 0 0;
+}    
+
+.First:before{
+  position: absolute;
+  bottom: 5px;
+  z-index: -1;
+  display: block;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: #ccc;
+}
+
+.Second:before,.Secoud:after{
+  position: absolute;
+  bottom: 5px;
+  z-index: -1;
+  display: block;
+  content: '';
+  width: 120%;
+  height: 2px;
+  background: #ccc;
+}
+
+.Therd:after{
+  position: absolute;
+  bottom: 5px;
+  z-index: -1;
+  display: block;
+  content: '';
+  width: 50%;
+  height: 2px;
+  background: #ccc;
+}
+//以上、ヘッター
+
+
+
+//メイン部分
+
+//大枠部分
+.L-Single-Container {
+  width: 700px;
+  margin: 0 auto;
+  background: #fff;
+  &__Head{
+    padding: 16px;
+    color: #333;
+    text-align: center;
+  }
+  &__Form {
+    padding: 24px 16px 40px;
+    &__Content{
+      max-width: 343px;
+      margin: 0 auto;
+    }
+    &__Text {
+      margin: 8px 0 0;
+      color: #888;
+      line-height: 1.5;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+  }
+}
+
+//各入力フォームの装飾
+.Form-Group{
+  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  padding-bottom: 30px;
+  &__Label {
+    font-weight: 600;
+    color: F5F5F5;
+    font-size: 14px;
+  }
+  &__Require {
+    background: #ea352d;
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+    vertical-align: top;
+  }
+  
+  &__Input {
+    width: 100%;
+    margin: 2px 0 0;
+    height: 48px;
+    padding: 10px 16px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    line-height: 1.5;
+    font-size: 16px;
+  }
+  &__Imfo {
+    margin: 8px 0 0;
+    color: #888;
+    line-height: 1.5;
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+  &__Confirmation{
+    font-weight: bold;
+  }
+  &__Explanation{
+    color: #333333;
+    font-size: 14px;
+  }
+}
+.field_with_errors{
+  display: contents
+}
+
+//名前入力部分の左右配置
+.Half{
+  display: flex;
+  &__Left{
+    margin-left: 14px;
+    width: calc(50% - 6px);
+    display: inline-block;
+  }
+  &__Right{
+    width: calc(50% - 6px);
+    display: inline-block;
+  } 
+}
+
+//パスワードの見える化システム
+//.Password-Revelation{
+  //margin: 17px 0 30px 0;
+  //&__Checkbox{
+    //line-height: 17px;
+    //height: 20px;
+  //   position: relative;
+  //   &__Input{
+  //     height: 20px;
+  //     width: 20px;
+  //   }
+  //   &__Label{
+  //     position: absolute;
+  //     top:3px;
+  //     left: 25px;
+  //     color: #333333;
+  // font-size: 14px;
+  // font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  //   }
+  // }
+//}
+
+
+//生年月日入力フォーム
+.Birthday-Wrap {
+  &__Select {
+    display: inline-block;
+    width: calc(30% - 30px); 
+  }
+}
+.year,.month,.day{
+  //position: relative;
+  //z-index: 2;
+  height: 48px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  width: 75px;
+  cursor: pointer;
+}
+
+//送信ボタン
+.Btn-Default{
+  text-align: center;
+  display: block;
+  width: 343px;
+  line-height: 48px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  -webkit-transition: all ease-out .3s;
+  transition: all ease-out .3s;
+  cursor: pointer;
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff;
+  text-decoration: none;
+}
+
+//本人情報の登録について+矢印
+  //①文章
+.Text-Right{
+  position: relative;
+  padding:42px 5px 42px 0;
+  font-size: 14px;
+  text-align: right;
+}
+  //②矢印部分
+.Icon-Arrow-Right{
+  position: absolute;
+  top: 47px;
+  right: 0px;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-top: solid 2px #0199E8;
+  border-right: solid 2px #0199E8;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+//青文字装飾
+.Blue-Character {
+  color: #0099e8;
+  text-decoration: none;
+}
+
+//リキャプチャ
+.Recaptcha-Term{
+  padding: 8px 16px;
+  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  line-height: 20px;
+  margin-bottom: 36px;
+  color: #888888;
+  font-size: 12px;
+}
+  
+
+//以下フッター
+.Single-Footer {
+  height: 250px;
+  padding: 40px 0;
+  text-align: center;
+  .Clearfix__Footer{
+    margin-bottom: 20px;
+  }
+  .Clearfix__Footer a {
+    display: block;
+    color: #333;
+    text-decoration:none;
+  }
+  .Clearfix__Footer li{
+    display: inline-block;
+    padding: 0 7px;
+    font-size: 12px;
+    }
+}

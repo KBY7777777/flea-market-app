@@ -1,0 +1,116 @@
+.Single-Container
+  %header.Single-Header
+    %h1
+    = link_to image_tag("/logo.png", class:"Furima-Logo"), root_path
+  %nav.Single-Header__Bar
+    %ol
+      %li
+        会員情報
+        .Progress-Status.First
+      %li.Second
+        住所
+        .Progress-Status.Active
+      %li.Therd
+        完了
+        .Progress-Status
+  %section.L-Single-Container
+
+
+.Address-Content
+  %section.Address-Content-Chapter-Container
+    %h2.Address-Content-Chapter-Head 発送元・お届け先住所登録
+    = form_with model: @address, url: addresses_path, id: 'new_address', class: 'Address-Content-Single-Inner Address-Content-Registration-Form', local: true do |f|
+      .Address-Content-Single-Content
+        .Form-Group
+          = f.label "name", "お名前"
+          %span.Form-Require 必須
+          = f.text_field "destination_family_name", placeholder: "例) 渦巻", class: "Input-Default", value: ""
+          = f.text_field "destination_first_name", placeholder: "例) 鳴門", class: "Input-Default", value: ""
+          - if @address.errors.any?
+            .error_explanation
+              - @address.errors.full_messages_for(:destination_family_name).each do |message|
+                %li{style: "color:red"}
+                  = message
+          - if @address.errors.any?
+            .error_explanation
+              - @address.errors.full_messages_for(:destination_first_name).each do |message|
+                %li{style: "color:red"}
+                  = message
+        .Form-Group
+          = f.label "name", "お名前カナ"
+          %span.Form-Require 必須
+          = f.text_field "destination_family_name_furigana", placeholder: "例) ウズマキ", class: "Input-Default", value: ""
+          = f.text_field "destination_first_name_furigana", placeholder: "例) ナルト", class: "Input-Default", value: ""
+          - if @address.errors.any?
+            .error_explanation
+              - @address.errors.full_messages_for(:destination_family_name).each do |message|
+                %li{style: "color:red"}
+                  = message
+          - if @address.errors.any?
+            .error_explanation
+              - @address.errors.full_messages_for(:destination_first_name).each do |message|
+                %li{style: "color:red"}
+                  = message
+        .Form-Group
+          = f.label "zip_code1", "郵便番号"
+          %span.Form-Require 必須
+          = f.text_field "postal_code", placeholder: "例) 123-4567", class: "Input-Default", maxlength: "8", pattern: "\\d{3}-\\d{4}", value: ""
+          - if @address.errors.any?
+            .error_explanation
+              - @address.errors.full_messages_for(:postal_code).each do |message|
+                %li{style: "color:red"}
+                  = message
+        .Form-Group
+          = f.label "prefecture", "都道府県"
+          %span.Form-Require  必須
+          .Select-Wrap
+            %i.Icon-Arrow-Bottom
+            = f.collection_select "prefectures_area", Prefecture.all, :id, :name, {prompt:"選択してください"}, {class:"Select-Default"}
+            - if @address.errors.any?
+              .error_explanation
+                - @address.errors.full_messages_for(:prefectures_area).each do |message|
+                  %li{style: "color:red"}
+                    = message
+        .Form-Group
+          = f.label "city", "市区町村"
+          %span.Form-Require 必須
+          = f.text_field "municipality", placeholder: "例) 横浜市旭区二俣川", class: "Input-Default", value: ""
+          - if @address.errors.any?
+            .error_explanation
+              - @address.errors.full_messages_for(:municipality).each do |message|
+                %li{style: "color:red"}
+                  = message
+        .Form-Group
+          = f.label "address1_label", "番地"
+          %span.Form-Require 必須
+          = f.text_field "house_number", placeholder: "例) 1-1", class: "Input-Default",  value: ""
+          - if @address.errors.any?
+            .error_explanation
+              - @address.errors.full_messages_for(:house_number).each do |message|
+                %li{style: "color:red"}
+                  = message
+        .Form-Group
+          = f.label "address2_label", "建物名"
+          %span.Form-Arbitrary 任意
+          = f.text_field "building", placeholder: "例) ライオンズマンション", class: "Input-Default", value: ""
+        .Form-Group
+          = f.label "address2_label", "電話"
+          %span.Form-Arbitrary 任意
+          = f.number_field "tel", placeholder: "例) 1234567890", class: "Input-Default", value: ""
+        = f.submit "登録する", class: "Btn-Default Btn-Red"
+
+%footer.Single-Footer
+  %nav
+    %ul.Clearfix__Footer
+      %li
+        = link_to "#" do
+          プライバシーポリシー
+      %li
+        = link_to "#" do
+          フリマ利用規約
+      %li
+        = link_to "#" do 
+          特定商取引に関する表記
+    = link_to image_tag("/logo.png", class:"Furima-Logo"), root_path
+  %p
+    %small © FURIMA, Inc.

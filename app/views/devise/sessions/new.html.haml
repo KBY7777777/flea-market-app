@@ -1,0 +1,107 @@
+
+%body
+
+  / Google Tag Manager (noscript)
+  %noscript
+    %iframe{height: "0", src: "https://www.googletagmanager.com/ns.html?id=GTM-KLPT5L5", style: "display:none;visibility:hidden", width: "0"}
+  / End Google Tag Manager (noscript)
+
+
+  -#表示部分全体
+  .single-container
+
+    -#ヘッダーのロゴ部分
+    %header.single-header
+      %h1
+        = link_to image_tag("/logo.png", class:"Furima-Logo"), root_path
+
+
+    -#ヘッダーとフッターの間
+    %main.single-main
+
+      -#ログイン関連の入力欄部分全体
+      .login-panel
+
+        -#「アカウントをお持ちでない方はこちら」部分
+        .login-no-account
+          %p アカウントをお持ちでない方はこちら
+          = link_to "新規会員登録", new_user_registration_path
+
+        -#メアド、PW「ログイン」ボタン、パスワードをお忘れの方
+        = form_with model: @user, url: user_session_path, id: 'login_user', local: true do |f|
+
+          -#入力欄部分全体
+          .login-form-inner
+            - flash.each do |name, msg|
+              %li{style: "color:red"}
+                = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+
+            -#入力欄のクラス（メアド、PW、ロボットでないで共通）
+            -#メアド入力欄クラス
+            .form-group
+              = f.email_field "email", placeholder: "メールアドレス", class: "login-input-text input-default", value: ""
+
+            -#PW入力欄クラス
+            .form-group
+              = f.password_field "password", placeholder: "パスワード", class: "login-input-text input-default"
+
+            -# -#ロボットでないチェック欄クラス（削除）
+
+            -#「ログイン」ボタン
+            = f.submit "ログイン", class: "login-submit btn-default btn-red"
+            %input{name: "__csrf_value", type: "hidden", value: ""}
+
+            -# -#「パスワードをお忘れの方」リンク
+            -# = link_to "パスワードをお忘れの方", "/"
+
+    -#フッター部分（リンク集、ロゴ、登録商標）
+    %footer.single-footer
+      %nav
+        %ul.clearfix
+          %li
+            =link_to "プライバシーポリシー", "http://localhost:3000/overalls/privacy.html/"
+          %li
+            = link_to "FURIMA利用規約", "http://localhost:3000/overalls/tos.html/"
+          %li
+            = link_to "特定商取引に関する表記", "http://localhost:3000/overalls/tokutei.html/"
+      = link_to image_tag("/logo.png", class:"Furima-Logo"), root_path
+      %p
+        %small © FURIMA
+
+
+
+  -#以下、JavaScript設定関連と思われるコード
+
+  %script{gapi_processed: "true", src: "https://apis.google.com/js/api:client.js"}
+  %script{src: "//pcweb-assets.mercdn.net/assets/js/app.js?3185667705"}
+  :javascript
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({
+      'event': 'login',
+      'uid': ''
+    });
+
+  / Google Tag Manager
+  :javascript
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KLPT5L5');
+  / End Google Tag Manager
+
+
+  %iframe#ssIFrame_google{"aria-hidden" => "true", "frame-border" => "0", sandbox: "allow-scripts allow-same-origin", src: "https://accounts.google.com/o/oauth2/iframe#origin=https%3A%2F%2Fwww.mercari.com&rpcToken=689917607.7269297", style: "position: absolute; width: 1px; height: 1px; left: -9999px; top: -9999px; right: -9999px; bottom: -9999px; display: none;"}
+  %div{style: "display: none; visibility: hidden;"}
+    :javascript
+      !function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1964320460558899");fbq("track","PageView");
+    %noscript
+  #fb-root.fb_reset
+    %div{style: "position: absolute; top: -10000px; width: 0px; height: 0px;"}
+      %div
+  %div{style: "background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 3px; position: absolute; transition: visibility 0s linear 0.3s, opacity 0.3s linear 0s; opacity: 0; visibility: hidden; z-index: 2000000000; left: 0px; top: -10000px;"}
+    %div{style: "width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 2000000000; background-color: rgb(255, 255, 255); opacity: 0.05;"}
+    .g-recaptcha-bubble-arrow{style: "border: 11px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -11px; z-index: 2000000000;"}
+    .g-recaptcha-bubble-arrow{style: "border: 10px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -10px; z-index: 2000000000;"}
+    %div{style: "z-index: 2000000000; position: relative;"}
+      %iframe{frameborder: "0", name: "c-kbshc59oo8vu", sandbox: "allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox", scrolling: "no", src: "https://www.google.com/recaptcha/api2/bframe?hl=ja&v=T9w1ROdplctW2nVKvNJYXH8o&k=6LfZGCYTAAAAAHoK-s7Lg5OdYg5Fq4susvALmZoc&cb=ilrsawij7eo0", style: "width: 100%; height: 100%;", title: "recaptcha challenge"}
