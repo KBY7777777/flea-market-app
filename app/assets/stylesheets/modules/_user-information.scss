@@ -28,9 +28,6 @@
       background-color: #ccc;
       border-radius: 50%;
     }
-    //.Active-Name{
-      //color:#ea352d;
-    //}
     .Active{
       background: #ea352d;
     }
@@ -171,27 +168,7 @@
   } 
 }
 
-//パスワードの見える化システム
-//.Password-Revelation{
-  //margin: 17px 0 30px 0;
-  //&__Checkbox{
-    //line-height: 17px;
-    //height: 20px;
-  //   position: relative;
-  //   &__Input{
-  //     height: 20px;
-  //     width: 20px;
-  //   }
-  //   &__Label{
-  //     position: absolute;
-  //     top:3px;
-  //     left: 25px;
-  //     color: #333333;
-  // font-size: 14px;
-  // font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-  //   }
-  // }
-//}
+
 
 
 //生年月日入力フォーム
@@ -202,8 +179,6 @@
   }
 }
 .year,.month,.day{
-  //position: relative;
-  //z-index: 2;
   height: 48px;
   border-radius: 4px;
   border: 1px solid #ccc;
