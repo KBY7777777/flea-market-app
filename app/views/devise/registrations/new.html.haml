@@ -1,0 +1,142 @@
+%body
+  .Single-Container
+    %header.Single-Header
+      %h1
+      = link_to image_tag("/logo.png", class:"Furima-Logo"), root_path
+    %nav.Single-Header__Bar
+      %ol
+        %li.Active-Name
+          会員情報
+          .Progress-Status.Active.First
+        %li.Second
+          住所
+          .Progress-Status
+        %li.Therd
+          完了
+          .Progress-Status
+
+              
+    %main.Single-Main
+      %section.L-Single-Container
+        %h2.L-Single-Container__Head 会員情報入力
+        = form_with model: @user, url: user_registration_path, id: 'new_user', class: 'L-Single-Container__Form', local: true do |f|
+          .L-Single-Container__Form__Content
+            .Form-Group
+              = f.label "nickname", "ニックネーム", class: "Form-Group__Label"
+              %span.Form-Group__Require 必須
+              = f.text_field "nickname", placeholder: "例) メルカリ太郎", class: "Form-Group__Input", value: ""
+              - if @user.errors.any?
+                .error_explanation
+                  - @user.errors.full_messages_for(:nickname).each do |message|
+                    %li{style: "color:red"}
+                      = message
+            .Form-Group
+              = f.label "email", "メールアドレス", class: "Form-Group__Label" 
+              %span.Form-Group__Require 必須
+              = f.email_field "email", placeholder: "PC・携帯どちらでも可", class: "Form-Group__Input", value: ""
+              - if @user.errors.any?
+                .error_explanation
+                  - @user.errors.full_messages_for(:email).each do |message|
+                    %li{style: "color:red"}
+                      = message
+
+            .Form-Group
+              = f.label "password", "パスワード", class: "Form-Group__Label"
+              %span.Form-Group__Require 必須
+              = f.password_field "password", placeholder: "7文字以上の半角英数字", class: "Form-Group__Input"
+              - if @user.errors.any?
+                .error_explanation
+                  - @user.errors.full_messages_for(:password).each do |message|
+                    %li{style: "color:red"}
+                      = message
+            .Form-Group
+              = f.label "password", "パスワード再入力", class:"Form-Group__Label"
+              %span.Form-Group__Require 必須
+              %p.Form-Group__Explanation ※確認のためもう一度ご入力ください。
+              = f.password_field "encrypted_password", placeholder: "7文字以上の半角英数字", class: "Form-Group__Input"
+              - if @user.errors.any?
+                .error_explanation
+                  - @user.errors.full_messages_for(:password_confirmation).each do |message|
+                    %li{style: "color:red"}
+                      = message
+
+            .Form-Group
+              %h3.Form-Group__Confirmation 本人確認
+              %p.Form-Group__Explanation
+                安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+            .Form-Group
+              %div
+                = f.label "family_name_kanji", "お名前(全角)", class:"Form-Group__Label"
+                %span.Form-Group__Require 必須
+                - if @user.errors.any?
+                  .error_explanation
+                    - @user.errors.full_messages_for(:family_name).each do |message|
+                      %li{style: "color:red"}
+                        = message
+                - if @user.errors.any?
+                  .error_explanation
+                    - @user.errors.full_messages_for(:first_name).each do |message|
+                      %li{style: "color:red"}
+                        = message
+              .Half
+                = f.text_field "family_name", placeholder: "例) 山田", class: "Form-Group__Input Half__Right", value: ""
+                = f.text_field "first_name", placeholder: "例) 彩", class: "Form-Group__Input Half__Left", value: ""
+
+                
+            .Form-Group
+              %div
+                = f.label "family_name_kana", "お名前カナ(全角)", class: "Form-Group__Label"
+                %span.Form-Group__Require 必須
+                - if @user.errors.any?
+                  .error_explanation
+                    - @user.errors.full_messages_for(:family_name_furigana).each do |message|
+                      %li{style: "color:red"}
+                        = message
+                - if @user.errors.any?
+                  .error_explanation
+                    - @user.errors.full_messages_for(:first_name_furigana).each do |message|
+                      %li{style: "color:red"}
+                        = message
+              .Half
+                = f.text_field "familyname_furigana", placeholder: "例) ヤマダ", class: "Form-Group__Input Half__Right", value: ""
+                = f.text_field "firstname_furigana", placeholder: "例) アヤ", class: "Form-Group__Input Half__Left", value: ""
+            .Form-Group
+              = f.label "birthday", "生年月日", class: "Form-Group__Label"
+              %span.Form-Group__Require 必須
+              %br/
+              .Birthday-Wrap
+                .Birthday-Wrap__Select
+              = raw sprintf(f.date_select(:date, use_month_numbers: true, with_css_classes: "Birthday-Wrap__Form", start_year: 1930, end_year: (Time.now.year + 10), default: Date.new(2020, 1, 1), date_separator: '%s'), '年 ', '月 ') + '日'
+              - if @user.errors.any?
+                .error_explanation
+                  - @user.errors.full_messages_for(:birthday).each do |message|
+                    %li{style: "color:red"}
+                      = message
+            %p.L-Single-Container__Form__Text
+              ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+          .L-Single-Container__Form__Content
+
+            = f.submit "次へ進む", class: "Btn-Default"
+            .Form-Group.Text-Right
+              %p
+              =link_to "本人情報の登録について", "#", class:"Blue-Character"
+              %i.Icon-Arrow-Right
+            .Form-Group.Recaptcha-Term
+              %p
+                This site is protected by reCAPTCHA and the Google
+                =link_to "Privacy Policy", "#", class:"Blue-Character"
+                and
+                =link_to "Terms of Service", "#", class:"Blue-Character"
+                apply.
+    %footer.Single-Footer
+      %nav
+        %ul.Clearfix__Footer
+          %li
+            =link_to "プライバシーポリシー", "#"
+          %li
+            =link_to "フリマ利用規約", "#"
+          %li
+            =link_to "特定商取引に関する表記", "#"
+      = link_to image_tag("/logo.png", class:"Furima-Logo"), root_path
+      %p
+        %small © FURIMA, Inc.

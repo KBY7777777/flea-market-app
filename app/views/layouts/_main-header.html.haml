@@ -67,13 +67,15 @@
 
     -#「ログイン」ボタン + 「新規会員登録」ボタン
     %ul.ListsRight
-
-      -#「ログイン」ボタン
-      %li.ListsRight__Item.ListsRight__Item--Login
-        = link_to "ログイン", "#"
-
-      -#「新規会員登録」ボタン
-      %li.ListsRight__Item.ListsRight__Item--New
-        = link_to "新規会員登録", "#"
+      - if user_signed_in?
+        %li.ListsRight__Item.ListsRight__Item--Login
+          = link_to "マイページ", "#"
+        %li.ListsRight__Item.ListsRight__Item--New
+          = link_to "ログアウト", destroy_user_session_path, method: :delete
+      - else
+        %li.ListsRight__Item.ListsRight__Item--Login
+          = link_to "ログイン", new_user_session_path
+        %li.ListsRight__Item.ListsRight__Item--New
+          = link_to "新規会員登録", new_user_registration_path
 
 
