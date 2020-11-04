@@ -63,7 +63,7 @@
 - belongs_to:item
 
 
-## adresseesテーブル
+## addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
