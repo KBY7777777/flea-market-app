@@ -1,0 +1,220 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+//ここから、ユーザーメニューバー画面（=users/menu.html）の装飾
+
+.Single-Container {
+  background-color: #f5f5f5;
+}
+
+//ヘッダー部分のクラス名は「%header.MenuHeader」とする（内容はtopページヘッダーと同じ）
+.MenuHeader {    //topページヘッダー部分の装飾（クラス名は「MenuHeader」）
+  padding: 0 60px;
+
+  //「.MenuHeader」以下のクラスは、部分テンプレートのscssにて指定
+}
+
+//コンテンツ表示部分のクラス名は「%main.l-container.clearfix」とする
+.L-Container {
+  margin: 40px auto 0;
+  width: 700px;
+  padding: 0 0 40px;
+  display: block;
+
+  .L-Content {
+    float: none;
+    width: 700px;
+    background-color: #3CCACE;
+    border-radius: 4px;
+    margin-bottom: 40px;    //トップアイコンとメニュー見出しの間
+
+    .MypageUserIcon {
+      height: 200px;
+      position: relative;
+      padding: 20px;
+      background: url(/jp/assets/img/mypage/user-bg.jpg?25704017);
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: center;
+
+      a {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translate(0, -50%);
+        color: #333;
+        text-decoration: none;
+      }
+
+      figure {
+        overflow: hidden;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+        border-radius: 50%;
+
+        fieldset, img {
+          border: 0;
+          width: 100%;
+          vertical-align: bottom;
+        }
+      }
+
+      .bold {
+        margin: 8px 0 0;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.4;
+      }
+
+      .MypageNumber {
+        div {
+          display: inline-block;
+          font-size: 14px;
+
+          +div {
+            margin: 0 0 0 16px;
+          }
+        }
+
+        span {
+          margin: 0 0 0 8px;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+
+  .L-Side {
+      float: none;
+
+    .MypageNav {
+      display: flex;    //メニューバーを左右2列に並べる
+
+      .NavLeft {    //メニューバー第1列
+        margin-right: 70px;
+
+        ul.MypageNavList {
+          margin: 16px 0;
+
+          li {
+            border-top: 1px solid #eee;
+            width: 315px;    //メニューボタンの表示幅
+
+            .MypageNavListItem {
+              position: relative;
+              display: block;
+              min-height: 48px;
+              padding: 16px;
+              background: #fff;
+              font-size: 14px;
+              color: #333;
+              text-decoration: none;
+
+              .icon-arrow-right {
+                position: absolute;
+                top: 20px;
+                right: 16px;
+                display: inline-block;
+                width: 8px;
+                height: 8px;
+                border-top: solid 2px #ccc;
+                border-right: solid 2px #ccc;
+                -webkit-transform: rotate(45deg);
+                transform: rotate(45deg);
+              }
+
+              span.MypageNavNumber {
+                position: absolute;
+                top: 50%;
+                right: 210px;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                background: #ea352d;
+                text-align: center;
+                line-height: 24px;
+                color: #fff;
+                transform: translate(0, -50%);
+              }
+            }
+          }
+          li:first-child {
+            border-top: 0px;
+          }
+
+        }
+
+        .MypageNavHead {
+          font-size: 16px;
+          font-weight: bold;
+        }
+      }
+
+      .NavRight {    //メニューバー第1列
+        ul.MypageNavList {
+          margin: 16px 0 66px 0;
+
+          li {
+            border-top: 1px solid #eee;
+            width: 315px;    //メニューボタンの表示幅
+
+            .MypageNavListItem {
+              position: relative;
+              display: block;
+              min-height: 48px;
+              padding: 16px;
+              background: #fff;
+              font-size: 14px;
+              color: #333;
+              text-decoration: none;
+
+              .icon-arrow-right {
+                position: absolute;
+                top: 20px;
+                right: 16px;
+                display: inline-block;
+                width: 8px;
+                height: 8px;
+                border-top: solid 2px #ccc;
+                border-right: solid 2px #ccc;
+                -webkit-transform: rotate(45deg);
+                transform: rotate(45deg);
+              }
+            }
+          }
+          li:first-child {
+            border-top: 0px;
+          }
+        }
+
+        .MypageNavHead {
+          font-size: 16px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+//フッター部分のクラス名は「%footer.MenuFooter」とする（内容はtopページフッターと同じ）
+.MenuFooter {    //バナー+フッター部分の装飾（親クラス「MenuFooter」で括った）
+  //「.MenuFooter」以下のクラスは、部分テンプレートのscssにて指定
+}
+
+//出品ボタン部分のクラス名は「.MenuPurchaseBtn」とする（内容はtopページ出品ボタンと同じ）
+.MenuPurchaseBtn {
+  //「.MenuPurchaseBtn」以下のクラスは、部分テンプレートのscssにて指定
+}
+
+
