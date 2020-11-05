@@ -16,9 +16,9 @@
 
     .L-Content
       %section.MypageUserIcon
-        %a{href: "/"}
+        = link_to "/" do
           %figure
-            %img{alt: "", height: "60", src: "//static.mercdn.net/images/member_photo_noimage_thumb.png", width: "60"}/
+            = image_tag "//static.mercdn.net/images/member_photo_noimage_thumb.png"
           %h2.bold Gudetama
           .MypageNumber
             %div
