@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     collection do
       get 'index'
       get 'creditcard'
+      get 'logout'
     end
   end
 

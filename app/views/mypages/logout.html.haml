@@ -1,0 +1,33 @@
+-#ユーザーログアウト画面
+
+!!!
+
+.Single-Container
+
+  %header.LogoutHeader
+
+    -#Header部分（部分テンプレートで参照）
+    = render partial: "/layouts/main-header"
+
+
+  -#コンテンツ部分
+  %main.L-Container.clearfix
+
+    -#右側コンテンツ部分（ここでは「ログアウト」ボタン）
+    .L-Content
+      .L-Chapter-Container
+        %form#logout-form.L-Single-Inner{action: "#", method: "POST", novalidate: "novalidate"}
+          .L-Single-Content
+            %button.Btn-Default.btn-red{type: "submit"} ログアウト
+            %input{name: "__csrf_value", type: "hidden"}/
+
+
+  %footer.LogoutFooter
+    -#Banner部分+Footer部分（部分テンプレートで参照）
+    = render partial: "/layouts/main-footer"
+
+  .LogoutPurchaseBtn
+    -#右下の「出品する」ボタン（部分テンプレートで参照）
+    = render partial: "/layouts/purchasebtn"
+
+
