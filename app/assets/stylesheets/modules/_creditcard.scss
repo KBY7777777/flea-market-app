@@ -1,0 +1,373 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+//クレジットカード登録画面（=mypages/creditcard.html）の装飾
+
+.CreditCard {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: rgb(245, 245, 245);
+
+  .CreditCard-Main {
+    background-color: rgb(255, 255, 255);
+    max-width: 700px;
+    margin: 0px auto;
+    width: 100%;
+
+    .CreditCard-Primary {
+      position: relative;
+
+      .CreditCard-Title {
+        padding: 32px 16px;
+        border-bottom: 1px solid rgb(245, 245, 245);
+        display: block;
+
+        h2 {
+          display: block;
+          text-align: center;
+          font-size: 24px;
+          line-height: 34px;
+          font-weight: 600;
+          margin: 0;
+          padding: 0;
+        }
+      }
+
+      form {
+        .CreditCard-Secondary {
+          max-width: 375px;
+          margin: 0px auto;
+          padding: 0px 16px;
+
+          .CreditCard-Number {
+            padding-bottom: 48px;
+            padding: 32px 0px;
+            opacity: 1;
+            pointer-events: auto;
+            display: block;
+
+            &__Zone {
+              &__Title {
+                align-items: center;
+                display: flex;
+
+                label {
+                  font-size: 14px;
+                  font-weight: 600;
+                  line-height: 1.4em;
+                }
+
+                span {
+                  margin-left: 8px;
+                  font-size: 12px;
+                  padding: 0 4px;
+                  background-color: #ff0211;
+                  color: #fff;
+                  border-radius: 2px;
+                  display: inline-block;
+                  font-style: normal;
+                  font-weight: 600;
+                  line-height: 1.4em;
+                }
+              }
+
+              &__Date {
+                align-items: center;
+                display: inline-flex;
+                width: 100%;
+                margin-top: 16px;
+                color: #222;
+                font-size: 16px;
+
+                &__Frame {
+                  display: inline-block;
+                  position: relative;
+                  width: inherit;
+
+                  input {
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    box-sizing: border-box;
+                    font-family: inherit;
+                    font-size: inherit;
+                    height: 48px;
+                    margin: 0;
+                    outline: none;
+                    padding: 0 16px;
+                    width: inherit;
+                    text-rendering: auto;
+                    letter-spacing: normal;
+                    word-spacing: normal;
+                    text-transform: none;
+                    text-indent: 0px;
+                    text-shadow: none;
+                    display: inline-block;
+                    text-align: start;
+                    appearance: textfield;
+                    -webkit-rtl-ordering: logical;
+                    cursor: text;
+                    font: 400 13.3333px Arial;
+                  }
+                }
+              }
+
+              img {
+                max-height: 20px;
+                max-width: 44px;
+                margin: 5px;
+                vertical-align: middle;
+              }
+            }
+
+            .CreditCard-Common {
+              margin-top: 28px;
+
+              &__Text {
+                align-items: center;
+                display: flex;
+
+                label {
+                  font-size: 14px;
+                  font-weight: 600;
+                  line-height: 1.4em;
+                }
+
+                span {
+                  margin-left: 8px;
+                  font-size: 12px;
+                  padding: 0 4px;
+                  background-color: #ff0211;
+                  color: #fff;
+                  border-radius: 2px;
+                  display: inline-block;
+                  font-style: normal;
+                  font-weight: 600;
+                  line-height: 1.4em;
+                }
+              }
+
+              .CreditCard-Expiration {
+                display: flex;
+                -webkit-box-pack: justify;
+                justify-content: space-between;
+                margin-top: 16px;
+                -webkit-box-align: center;
+                align-items: center;
+
+                &__Time {
+                  flex: 1 1 0%;
+                  width: 100%;
+                  align-items: center;
+                  display: inline-flex;
+
+                  &__Zone {
+                    display: inline-block;
+                    position: relative;
+                    width: inherit;
+
+                    &__Date {
+                      appearance: none;
+                      background-color: #fff;
+                      border: 1px solid #ccc;
+                      border-radius: 4px;
+                      box-sizing: border-box;
+                      color: #222;
+                      font-size: 16px;
+                      height: 48px;
+                      line-height: 1;
+                      margin: 0;
+                      outline: none;
+                      padding: 0 56px 0 16px;
+                      width: 100%;
+                      flex: 1 1 0%;
+                      font-family: inherit;
+                      overflow: visible !important;
+                      text-rendering: auto;
+                      letter-spacing: normal;
+                      word-spacing: normal;
+                      text-transform: none;
+                      text-indent: 0px;
+                      text-shadow: none;
+                      display: inline-block;
+                      text-align: start;
+                      align-items: center;
+                      white-space: pre;
+                      -webkit-rtl-ordering: logical;
+                      cursor: default;
+                      font: 400 13.3333px Arial;
+
+                      option {
+                        box-sizing: border-box;
+                        font-weight: normal;
+                        display: block;
+                        white-space: pre;
+                        min-height: 1.2em;
+                        padding: 0px 2px 1px;
+                        line-height: 1;
+                        color: #222;
+                        font-size: 16px;
+                        font-family: inherit;
+                        text-rendering: auto;
+                        letter-spacing: normal;
+                        word-spacing: normal;
+                        text-transform: none;
+                        text-indent: 0px;
+                        text-shadow: none;
+                        text-align: start;
+                      }
+                    }
+
+                    svg {
+                      bottom: 0;
+                      margin: auto;
+                      pointer-events: none;
+                      position: absolute;
+                      right: 16px;
+                      top: 0;
+                      box-sizing: border-box;
+                      width: 24;
+                      height: 24;
+                      fill: rgb(136, 136, 136);
+                      fill-rule: evenodd;
+                      overflow: hidden;
+
+                      path {
+                        box-sizing: border-box;
+                        transform-origin: 0px 0px;
+                        pointer-events: none;
+                      }
+                    }
+                  }
+                }
+
+                .CreditCard-Expiration-Month {
+                  width: 46px;
+                  text-align: center;
+                }
+
+                .CreditCard-Expiration-Year {
+                  width: 30px;
+                  text-align: right;
+                }
+              }
+
+              .CreditCard-Security {
+                align-items: center;
+                display: inline-flex;
+                width: 100%;
+                margin-top: 16px;
+                color: #222;
+                font-size: 16px;
+
+                &__Date {
+                  display: inline-block;
+                  position: relative;
+                  width: inherit;
+
+                  input {
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    box-sizing: border-box;
+                    font-family: inherit;
+                    font-size: inherit;
+                    height: 48px;
+                    margin: 0;
+                    outline: none;
+                    padding: 0 16px;
+                    width: inherit;
+                    text-rendering: auto;
+                    letter-spacing: normal;
+                    word-spacing: normal;
+                    text-transform: none;
+                    text-indent: 0px;
+                    text-shadow: none;
+                    display: inline-block;
+                    text-align: start;
+                    appearance: textfield;
+                    -webkit-rtl-ordering: logical;
+                    font: 400 13.3333px Arial;
+                  }
+                }
+              }
+              .CreditCard-Description {
+                position: relative;
+
+                &__Text {
+                  margin-top: 8px;
+                  text-align: right;
+                  color: rgb(0, 149, 238);
+                  cursor: pointer;
+
+                  span {
+                    display: inline-block;
+                    width: 14px;
+                    height: 14px;
+                    border-radius: 50%;
+                    background: rgb(0, 149, 238);
+                    color: rgb(255, 255, 255);
+                    line-height: 14px;
+                    font-size: 12px;
+                    text-align: center;
+                  }
+                }
+              }
+            }
+
+            button {
+              background-color: #ea352d;
+              color: #fff;
+              margin-top: 32px;
+              width: 100%;
+              font-size: 17px;
+              min-height: 48px;
+              padding: 0 24px;
+              transition-duration: .1s;
+              transition-timing-function: ease-in-out;
+              border-radius: 4px;
+              border: 1px solid transparent;
+              box-sizing: border-box;
+              display: inline-block;
+              font-weight: 600;
+              line-height: 1;
+              overflow: hidden;
+              text-align: center;
+              text-decoration: none;
+              transition-property: background-color,border-color,color;
+              vertical-align: middle;
+              white-space: nowrap;
+              word-break: break-word;
+              text-rendering: auto;
+              letter-spacing: normal;
+              word-spacing: normal;
+              text-transform: none;
+              text-indent: 0px;
+              text-shadow: none;
+              align-items: flex-start;
+              pointer-events: auto;
+            }
+
+            .Back {
+              color: #0095ee;
+              margin-top: 32px;
+              display: block;
+              width: 100%;
+              text-align: center;
+              text-decoration: none;
+              word-break: keep-all;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+

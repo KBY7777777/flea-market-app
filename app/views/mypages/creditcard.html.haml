@@ -1,0 +1,89 @@
+-#クレジットカード登録画面
+
+-#トップページヘッダー
+.CreditCard
+  = render '/layouts/main-header'
+
+  .CreditCard-Main
+    .CreditCard-Primary
+      %section.CreditCard-Title
+        %h2 クレジットカード情報入力
+      %form{action: "#"}
+        .CreditCard-Secondary
+          %section.CreditCard-Number
+            .CreditCard-Number__Zone
+              .CreditCard-Number__Zone__Title
+                %label カード番号
+                %span 必須
+              .CreditCard-Number__Zone__Date{"data-test": "new-credit-card-no"}
+                .CreditCard-Number__Zone__Date__Frame
+                  %input{autocomplete: "off", "data-test": "new-credit-card-no", maxlength: "19", name: "creditCardNo", placeholder: "半角数字のみ", type: "text", value: ""}/
+              =image_tag "https://web-jp-assets.mercdn.net/_next/static/images/visa-91c71914c6ae23d33f896e60bb1e3859.svg", class: "sc-gIjDWZ.bhyOwN", alt: "visa card"
+              =image_tag "https://web-jp-assets.mercdn.net/_next/static/images/mastercard-8b5b68c12b7a2fc8619c71f49ef9209b.svg", class: "sc-gIjDWZ.bhyOwN", alt: "mastercard"
+              =image_tag "https://web-jp-assets.mercdn.net/_next/static/images/saison-550107415f39b81fa19e87c96486ba20.svg", class: "sc-gIjDWZ.bhyOwN", alt: "saison card"
+              =image_tag "https://web-jp-assets.mercdn.net/_next/static/images/jcb-9ea981d20008c6545aa3afd1b3da9804.svg", class: "sc-gIjDWZ.bhyOwN", alt: "jcb card"
+              =image_tag "https://web-jp-assets.mercdn.net/_next/static/images/american_express-4df44c450653b0209850070ea5cf1264.svg", class: "sc-gIjDWZ.bhyOwN", alt: "american express card"
+              =image_tag "https://web-jp-assets.mercdn.net/_next/static/images/dinersclub-3d52fbb4b39dc998f039571f3314bfc7.svg", class: "sc-gIjDWZ.bhyOwN", alt: "dinersclub card"
+              =image_tag "https://web-jp-assets.mercdn.net/_next/static/images/discover-879b0b1c9f9a30159f09e9ef492ad349.svg", class: "sc-gIjDWZ.bhyOwN", alt: "discover card"
+
+            .CreditCard-Common
+              .CreditCard-Common__Text
+                %label 有効期限
+                %span 必須
+              .CreditCard-Expiration
+                .CreditCard-Expiration__Time{"data-test": "card-expiry-mm"}
+                  .CreditCard-Expiration__Time__Zone
+                    %select.CreditCard-Expiration__Time__Zone__Date{"data-test": "card-expiry-mm", name: "expiryMonth"}
+                      %option{"aria-selected": "false", label: "01", value: "01"} 01
+                      %option{"aria-selected": "false", label: "02", value: "02"} 02
+                      %option{"aria-selected": "false", label: "03", value: "03"} 03
+                      %option{"aria-selected": "false", label: "04", value: "04"} 04
+                      %option{"aria-selected": "false", label: "05", value: "05"} 05
+                      %option{"aria-selected": "false", label: "06", value: "06"} 06
+                      %option{"aria-selected": "false", label: "07", value: "07"} 07
+                      %option{"aria-selected": "false", label: "08", value: "08"} 08
+                      %option{"aria-selected": "false", label: "09", value: "09"} 09
+                      %option{"aria-selected": "false", label: "10", value: "10"} 10
+                      %option{"aria-selected": "false", label: "11", value: "11"} 11
+                      %option{"aria-selected": "false", label: "12", value: "12"} 12
+                    %svg{"aria-hidden": "true", fill: "#888888", "fill-rule": "evenodd", height: "24", viewbox: "0 0 24 24", width: "24"}
+                      %path{d: "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
+                %span.CreditCard-Expiration-Month 月
+                .CreditCard-Expiration__Time{"data-test": "card-expiry-yy"}
+                  .CreditCard-Expiration__Time__Zone
+                    %select.CreditCard-Expiration__Time__Zone__Date{"data-test": "card-expiry-yy", name: "expiryYear"}
+                      %option{"aria-selected": "false", label: "20", value: "2020"} 20
+                      %option{"aria-selected": "false", label: "21", value: "2021"} 21
+                      %option{"aria-selected": "false", label: "22", value: "2022"} 22
+                      %option{"aria-selected": "false", label: "23", value: "2023"} 23
+                      %option{"aria-selected": "false", label: "24", value: "2024"} 24
+                      %option{"aria-selected": "false", label: "25", value: "2025"} 25
+                      %option{"aria-selected": "false", label: "26", value: "2026"} 26
+                      %option{"aria-selected": "false", label: "27", value: "2027"} 27
+                      %option{"aria-selected": "false", label: "28", value: "2028"} 28
+                      %option{"aria-selected": "false", label: "29", value: "2029"} 29
+                      %option{"aria-selected": "false", label: "30", value: "2030"} 30
+                    %svg{"aria-hidden": "true", fill: "#888888", "fill-rule": "evenodd", height: "24", viewbox: "0 0 24 24", width: "24"}
+                      %path{d: "M12,15.66a1.73,1.73,0,0,1-1.2-.49L5.21,9.54a.7.7,0,0,1,1-1l5.62,5.62c.15.15.27.15.41,0L17.8,8.6a.71.71,0,0,1,1,0,.69.69,0,0,1,0,1l-5.57,5.58A1.71,1.71,0,0,1,12,15.66Z"}
+                %span.CreditCard-Expiration-Year 年
+            .CreditCard-Common
+              .CreditCard-Common__Text
+                %label セキュリティコード
+                %span 必須
+              .CreditCard-Security{"data-test": "card-security-code"}
+                .CreditCard-Security__Date
+                  %input{autocomplete: "off", "data-test": "card-security-code", name: "securityCode", placeholder: "カード背面4桁もしくは3桁の番号", type: "text", value: ""}/
+              .CreditCard-Description
+                .CreditCard-Description__Text
+                  %span ?
+                  カード裏面の番号とは？
+            %button{"data-test": "add-card-button", tabindex: "0", type: "submit"} 登録する
+            =link_to "もどる", "/jp/transaction/payment_method/m36272311004", class: "Back"
+
+-#バナー+フッター
+= render '/layouts/main-footer'
+
+-#「出品する」ボタン
+= render '/layouts/purchasebtn'
+
+
