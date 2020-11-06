@@ -1,0 +1,36 @@
+-#支払い方法選択画面
+
+.Payment
+  = render '/layouts/main-header'
+
+  .Payment-Main
+    .Payment-Primary
+      %section.Payment-Section
+        %h2.Payment-Title 支払い方法
+      .Payment-Secondary
+        %section.Payment-Common
+          .Radio-Btn
+            %span.Radio-Btn__Block{"data-test": "select-cvs-atm-checkbox"}
+              %span.Radio-Btn__Block__Checkbox
+                %input{type: "radio", value: "cvs_atm"}/
+                %svg{"aria-hidden": "true", fill: "#ffffff", "fill-rule": "evenodd", height: "16", viewbox: "0 0 24 24", width: "16"}
+                  %path{d: "M9.21,18.09a1.52,1.52,0,0,1-1.09-.44l-5-5a.71.71,0,0,1,0-1,.69.69,0,0,1,1,0l5,5a.26.26,0,0,0,.33-.07L19.92,6.11a.7.7,0,0,1,1,1L10.43,17.58A1.72,1.72,0,0,1,9.21,18.09Z"}
+            .Radio-Btn__Text
+              .Radio-Btn__Text__Section{"data-test": "cvs-atm-text-box"}
+                %p.Radio-Btn__Text__Section__A{"data-test": "cvs-atm-text"} コンビニ/ATM払い
+                %p.Radio-Btn__Text__Section__B{"data-test": "cvs-atm-fee-text"} (手数料¥100)
+        %section.Payment-Common
+          -# %ul.CreditCard
+          %ul.Cards
+          =link_to "+クレジットカードを追加", "http://localhost:3000/mypages/creditcard", class: "CreditCard-Zone"
+        %section.Payment-Common
+          %button.Btn{"data-test": "use-selected-payment-method", disabled: "disabled", tabindex: "-1", type: "button"} 選択した支払い方法を使う
+          =link_to "もどる", "http://localhost:3000/mypages/index.html", class: "Btn-Text"
+
+-#バナー+フッター
+= render '/layouts/main-footer'
+
+-#「出品する」ボタン
+= render '/layouts/purchasebtn'
+
+
