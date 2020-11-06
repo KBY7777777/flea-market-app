@@ -1,0 +1,86 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+* {
+  box-sizing: border-box;
+}
+
+.Single-Container {
+  background-color: #f5f5f5;
+}
+
+//ログアウト画面（=mypages/logout.html）の装飾
+
+//ヘッダー部分のクラス名は「%header.LogoutHeader」とする（内容はtopページヘッダーと同じ）
+.LogoutHeader {    //topページヘッダー部分の装飾（クラス名は「LogoutHeader」）
+  padding: 0 60px;
+  //LogoutHeaderクラス以下のトップページヘッダー部分は、部分template「mainheader.scss」で記述
+}
+
+
+//コンテンツ表示部分のクラス名は「%main.l-container.clearfix」とする
+.L-Container {
+    margin: 40px auto 0;
+    width: 700px;
+    padding: 0 0 40px;
+    display: block;
+
+  .L-Content {
+      float: none;
+      width: 700px;
+  }
+
+  .L-Chapter-Container:first-child {
+    margin: 0;
+  }
+
+  .L-Chapter-Container {
+    margin: 40px 0 0;
+    background: #fff;
+  }
+
+  .L-Single-Inner {
+      padding: 64px;
+      border-top: 1px solid #f5f5f5;
+  }
+
+  .L-Single-Content {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+
+.Btn-Default {
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  -webkit-transition: all ease-out .3s;
+  transition: all ease-out .3s;
+  cursor: pointer;
+  text-align: center;
+}
+button {
+  min-height: 1.5em;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+
+//フッター部分のクラス名は「%footer.LogoutFooter」とする（内容はtopページフッターと同じ）
+.LogoutFooter {    //バナー+フッター部分の装飾（親クラス「LogoutFooter」で括った）
+  //LogoutFooterクラス以下のトップページフッター部分は、部分template「mainfooter.scss」で記述
+}
+
+//出品ボタン部分のクラス名は「.MenuPurchaseBtn」とする（内容はtopページ出品ボタンと同じ）
+.LogoutPurchaseBtn {
+  //「.MenuPurchaseBtn」以下のクラスは、部分テンプレートのscssにて指定
+}
+
+

@@ -6,4 +6,7 @@ class MypagesController < ApplicationController
   def creditcard
   end
 
+  def logout
+  end
+
 end
