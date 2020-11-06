@@ -1,0 +1,146 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+* {
+  box-sizing: border-box;
+}
+
+//支払い方法選択画面（=mypages/payment.html）の装飾
+
+.Payment {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: rgb(245, 245, 245);
+
+  .Payment-Main {
+    background-color: rgb(255, 255, 255);
+    max-width: 700px;
+    margin: 0px auto;
+    width: 100%;
+
+    .Payment-Primary {
+      position: relative;
+
+      .Payment-Section {
+        padding: 32px 16px;
+        border-bottom: 1px solid rgb(245, 245, 245);
+
+        .Payment-Title {
+          display: block;
+          text-align: center;
+          font-size: 24px;
+          line-height: 34px;
+          font-weight: 600;
+          margin: 0;
+          padding: 0;
+        }
+      }
+      .Payment-Secondary {
+        max-width: 375px;
+        margin: 0px auto;
+        padding: 0px 16px;
+
+        .Payment-Common {
+          padding: 32px 0px;
+          opacity: 1;
+          pointer-events: auto;
+          display: block;
+          border-top: 1px solid rgb(245, 245, 245);
+
+          .Radio-Btn {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            &__Block {
+              align-items: flex-start;
+              cursor: pointer;
+              display: inline-flex;
+              font-size: 14px;
+              line-height: 20px;
+
+              &__Checkbox {
+                display: inline-block;
+                flex: 0 0 auto;
+                height: 20px;
+                position: relative;
+                width: 20px;
+
+                input {
+                  border-radius: 50%;
+                  transition-duration: .1s;
+                  appearance: none;
+                  background-color: #fff;
+                  border: 1px solid #ccc;
+                  height: 100%;
+                  margin: 0;
+                  position: absolute;
+                  width: 100%;
+                  font-size: 100%;
+                }
+              }
+            }
+
+            &__Text {
+              margin: 0px 16px;
+
+              &__Section {
+                &__A {
+                  font-size: 14px;
+                  line-height: 1.4em;
+                }
+
+                &__B {
+                  font-size: 12px;
+                  margin: 4px 0px 0px;
+                  line-height: 1.7;
+                }
+              }
+            }
+          }
+
+          // .CreditCard {
+          .Cards {
+            list-style: none;
+          }
+
+          .CreditCard-Zone {
+            color: #0095ee;
+            margin: 0px;
+            align-items: center;
+            display: flex;
+            text-decoration: none;
+          }
+
+          .Btn {
+            background-color: #ccc;
+            color: #888;
+            width: 100%;
+            font-size: 17px;
+            min-height: 48px;
+            padding: 0 24px;
+            font-weight: 600;
+            line-height: 1;
+            overflow: hidden;
+            text-align: center;
+            text-decoration: none; 
+          }
+
+          .Btn-Text {
+            color: #0095ee;
+            margin-top: 32px;
+            text-align: center;
+            display: block;
+            text-decoration: none;
+            padding-bottom: 48px;
+          }
+        }
+      }
+    }
+  }
+}
+
+

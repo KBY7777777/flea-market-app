@@ -9,4 +9,7 @@ class MypagesController < ApplicationController
   def logout
   end
 
+  def payment
+  end
+
 end
