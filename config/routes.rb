@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :mypages do
     collection do
       get 'index'
+      get 'creditcard'
     end
   end
 
