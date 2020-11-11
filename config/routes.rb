@@ -10,6 +10,15 @@ Rails.application.routes.draw do
 
   root 'items#index'
 
+  resources :items, only: [:index, :new, :create] do
+    collection do
+      get 'index'
+      get 'purchase'
+      get 'sell'
+      get 'item_details'
+    end
+  end
+
   resources :mypages do
     collection do
       get 'index'
