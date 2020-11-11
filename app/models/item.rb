@@ -21,7 +21,7 @@ class Item < ApplicationRecord
   # has_one :purchase_management
   
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :status
+  belongs_to_active_hash :itemstatus
   belongs_to_active_hash :deliverycharge
   belongs_to_active_hash :deliveryarea
   belongs_to_active_hash :deliveryday
