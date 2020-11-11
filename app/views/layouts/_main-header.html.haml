@@ -69,7 +69,7 @@
     %ul.ListsRight
       - if user_signed_in?
         %li.ListsRight__Item.ListsRight__Item--Login
-          = link_to "マイページ", "#"
+          = link_to "マイページ", "/mypages/index"
         %li.ListsRight__Item.ListsRight__Item--New
           = link_to "ログアウト", destroy_user_session_path, method: :delete
       - else
