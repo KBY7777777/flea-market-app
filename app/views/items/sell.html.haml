@@ -6,7 +6,7 @@
   = render partial: "/layouts/userheader"
 
   .Product-Listings
-    = form_with model: @item,  url: items_path,local: true do |form|  
+    = form_with model: @item,  url: items_path, local: true do |form|  
       .Product-Listing
         .Product-Listing__Inside
           .Product-Listing__Inside__Title
@@ -60,7 +60,7 @@
             .Product-Listing__Inside__Select__Form.children_box
 
             .Product-Listing__Inside__Select__Form.grandchildren_box 
-            
+
         .Product-Listing__Inside
           .Product-Listing__Inside__Title
             = form.label :"ブランド" 
