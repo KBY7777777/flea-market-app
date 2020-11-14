@@ -17,8 +17,8 @@ class Address < ApplicationRecord
   validates :prefectures_area, presence: true
   validates :municipality, presence: true
   validates :house_number, presence: true
-  validates :tel,
-  format: { with: /\A\d{10}\z/, message: "半角数字のみが使用できます"}
+  # validates :tel,
+  # format: { with: /\A\d{10}\z/, message: "半角数字のみが使用できます"}
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
