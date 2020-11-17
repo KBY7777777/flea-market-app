@@ -9,6 +9,7 @@ class ItemsController < ApplicationController
 
   def sell
     @item = Item.new
+    @item.item_images.build
   end
 
   def item_details
@@ -30,8 +31,9 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if  @item.save
-      redirect_to root_path 
+          redirect_to root_path 
     else
+      @item.item_images.build
       render :sell
     end
   end
@@ -43,7 +45,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:item_name,:item_text,:item_status,:delivery_charge,:delivery_area,:delivery_day,:price, :category_id, :brand).merge(user_id: current_user.id)
+    params.require(:item).permit(:item_name,:item_text,:item_status,:delivery_charge,:delivery_area,:delivery_day,:price, :category_id, :brand, item_images_attributes: [:url, :id, :_destroy]).merge(user_id: current_user.id)
   end
 
 end
