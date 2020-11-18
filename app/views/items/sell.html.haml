@@ -6,7 +6,7 @@
   = render partial: "/layouts/userheader"
 
   .Product-Listings
-    = form_with model: @item,  url: items_path, local: true do |form|  
+    = form_with model: @item, html: {id: "item-dropzone"}, local: true do |form|  
       .Product-Listing
         .Product-Listing__Inside
           .Product-Listing__Inside__Title
@@ -15,17 +15,21 @@
           %p.Product-Listing__Inside__MaxFhoto
             最大
             /
-            10
+            5
             /
             枚までアップロードできます
-          .Product-Listing__Inside__FhotoForm
-            .FhotoForm__Image-UpLoad
-              %svg.FhotoForm__Image-UpLoad__Icon
-                %path{d: "M19.3,5H16.73l-.8-1.61A.7.7,0,0,0,15.3,3H8.7a.7.7,0,0,0-.63.39L7.27,5H4.7A2.7,2.7,0,0,0,2,7.7V18.3A2.7,2.7,0,0,0,4.7,21H19.3A2.7,2.7,0,0,0,22,18.3V7.7A2.7,2.7,0,0,0,19.3,5ZM12,17.3A4.3,4.3,0,1,1,16.3,13,4.31,4.31,0,0,1,12,17.3Z"}
-              %p.FhotoForm__Image-UpLoad__Expect
-                ドラッグアンドドロップ
-                %br>/
-                またはクリックしてファイルをアップロード
+          .label-content
+          #previews
+            %label.Product-Listing__Inside__FhotoForm{for: "item_images_attributes_0_url", class: "label-box", id: "label-box--0"}
+              .FhotoForm__Image-UpLoad
+                %svg.FhotoForm__Image-UpLoad__Icon
+                  %path{d: "M19.3,5H16.73l-.8-1.61A.7.7,0,0,0,15.3,3H8.7a.7.7,0,0,0-.63.39L7.27,5H4.7A2.7,2.7,0,0,0,2,7.7V18.3A2.7,2.7,0,0,0,4.7,21H19.3A2.7,2.7,0,0,0,22,18.3V7.7A2.7,2.7,0,0,0,19.3,5ZM12,17.3A4.3,4.3,0,1,1,16.3,13,4.31,4.31,0,0,1,12,17.3Z"}
+                %p.FhotoForm__Image-UpLoad__Expect
+                  クリックしてファイルをアップロード
+        = form.fields_for :item_images do |i|
+          = i.file_field :url, value:"", data: {index: i.index}, class: "hidden-field count-field", name: "item[item_images_attributes][0][url]", id: "item_images_attributes_0_url", style: "display:none"
+          - if i.object.persisted?
+            = i.check_box :_destroy, data:{ index: i.index }, class: "update-box"
       %hr.Product-Listing-UnderLine
       .Product-Listing
         .Product-Listing__Inside
@@ -34,19 +38,19 @@
             %span.Iten-Up__Require 必須
           .Product-Listing__Inside__Write
             .Product-Listing__Inside__Write__form
-              = form.text_field :"item_name" ,  placeholder: "40文字まで"
+              = form.text_field :"item_name", placeholder: "40文字まで"
         .Product-Listing__Inside
           .Product-Listing__Inside__Title
             = form.label :"商品の説明" 
             %span.Iten-Up__Require 必須
           .Product-Listing__Inside__Write
             .Product-Listing__Inside__Write__form
-              = form.text_field :"item_text", class:"Item-Form-Expect", placeholder: "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。\n          "
+              = form.text_area :"item_text", class:"Item-Form-Expect", placeholder: "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。\n"
           .Writing-Max
-            %span> 0
-            \/
-            /
-            1000
+            -# %span> 0
+            -# \/
+            -# /
+            -# 1000
       %hr.Product-Listing-UnderLine
       .Product-Listing
         %p.Product-Listing__Subtitle 商品の詳細

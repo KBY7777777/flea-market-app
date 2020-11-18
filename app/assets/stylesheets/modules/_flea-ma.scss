@@ -774,7 +774,8 @@
      }
     &__Write{
       &__form input{
-        padding: 12px 450px 12px 5px;
+        width: 620px;
+        padding: 12px 12px;
         border: 1px solid #ccc;
         border-radius: 3px;}
     }
@@ -913,6 +914,46 @@
   color: #0099e8;
   text-decoration: none;
 }
+
+//プレビュー表示欄のCSS
+#previews{
+  display:flex;
+  height:160px;
+  overflow: hidden;
+  .preview-box{
+    width: 20%;
+    height: 100%;
+    flex-shrink: 0;
+    .upper-box{
+      height:85%;
+      img{
+        height:85%;
+        width: 100%;
+      }
+    }
+    .lower-box {
+      display: flex;
+      text-align: center;
+      .update-box {
+        color: #00b0ff;
+        width: 50%;
+        height: 50px;
+        border: 1px solid #eee;
+        background: #f5f5f5;
+        cursor: pointer;
+      }
+      .delete-box {
+        color: #00b0ff;
+        width: 50%;
+        height: 50px;
+        border: 1px solid #eee;
+        background: #f5f5f5;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
 
 
 //ここから、商品詳細画面（=items/item_details.html）の装飾
