@@ -37,7 +37,6 @@ $(function(){
 
     // プレビューの追加
     $('.Product-Listing').on('change', '.hidden-field', function(e) {
-      console.log('changed');
       setLabel();
       //hidden-fieldのidの数値のみ取得
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
