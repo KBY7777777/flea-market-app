@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   validates :item_text,
     length: {maximum: 1000},
     presence: true
-  validates :category_id,      presence: true
+  # validates :category_id,      presence: true    #L19「belongs_to :category」の設定で含まれるので削除
   validates :item_status,      presence: true
   validates :delivery_charge,  presence: true
   validates :delivery_area,    presence: true

@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_11_17_081309) do
     t.bigint "user_id", null: false
     t.string "item_name", null: false
     t.text "item_text", null: false
-    t.integer "category_id", null: false
+    t.bigint "category_id", null: false
     t.string "brand"
     t.integer "item_status", null: false
     t.integer "delivery_charge", null: false
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_11_17_081309) do
     t.integer "price", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
@@ -80,5 +81,6 @@ ActiveRecord::Schema.define(version: 2020_11_17_081309) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "item_images", "items"
+  add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
 end
