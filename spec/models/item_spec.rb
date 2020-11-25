@@ -12,7 +12,12 @@ describe Item do
 
 
     # #「商品画像」に関するvalidテスト（最大10枚まで）
-    # it "画像なしでは、出品できない" do
+    it "画像なしでは、出品できない" do
+      item = build(:item)
+      item.item_images = []
+      item.valid?
+      expect(item.errors[:item_images]).to include("を入力してください")
+    end
     # it "画像が1枚あれば、エラーは出ない（=画像があればOK）" do
     # it "画像が2枚でも、エラーは出ない（=画像複数枚で登録OK）" do
     # it "画像が10枚であれば、エラーは出ない（=画像10枚までOK）" do

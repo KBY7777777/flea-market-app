@@ -1,7 +1,6 @@
 FactoryBot.define do
 
   factory :item do
-    # item_image         {""}    #追って画像添付の単体テスト時に設定する
     item_name          {"ぐ"}
     item_text          {"ぐ"}
     category_id        {702}
@@ -13,6 +12,10 @@ FactoryBot.define do
     price              {"300"}
     association :user
     association :category
+
+    after(:build) do |built_item|
+      built_item.item_images << build(:item_image, item: built_item)
+    end
 
   end
 
