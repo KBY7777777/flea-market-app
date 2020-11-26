@@ -1,7 +1,9 @@
 class ItemsController < ApplicationController
   before_action :set_category, only: [:new, :create, :sell ]
+  # before_action :set_item, except: [:index, :new, :create]
   
   def index
+    @items = Item.all
   end
 
   def purchase
@@ -38,6 +40,29 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+  end
+
+  def show
+    @items = Item.find(params[:id])
+    @itemstatus = Itemstatus.find(@items.item_status)
+    @deliveryarea = Deliveryarea.find(@items.delivery_area)
+    @deliverycharge = Deliverycharge.find(@items.delivery_charge)
+    @deliveryday = Deliveryday.find(@items.delivery_day)
+    @grandchild = Category.find(@items.category_id)
+    @child = @grandchild.parent
+    @parent = @child.parent
+  end
+
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to root_path
+  end
+
   private
 
   def set_category  
@@ -48,5 +73,8 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:item_name,:item_text,:item_status,:delivery_charge,:delivery_area,:delivery_day,:price, :category_id, :brand, item_images_attributes: [:url, :id, :_destroy]).merge(user_id: current_user.id)
   end
 
-end
+  # def set_item
+  #   @item = Item.find(params[:id])
+  # end
 
+end
