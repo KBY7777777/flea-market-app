@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   root 'items#index'
 
-  resources :items, only: [:index, :new, :create, :show, :destroy, :edit, :update] do
+  resources :items do
     collection do
     
     #   get 'purchase'

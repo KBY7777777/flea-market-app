@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_category, only: [:new, :create, :sell ]
+  before_action :set_item, only: [:show, :destroy]
   
   def index
     @items = Item.all
@@ -25,14 +26,10 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
-  # def new
-  #   @item = Item.new
-  # end
-
   def create
     @item = Item.new(item_params)
     if  @item.save
-          redirect_to root_path 
+      redirect_to root_path 
     else
       @item.item_images.build
       render :sell
@@ -46,7 +43,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @items = Item.find(params[:id])
     @itemstatus = Itemstatus.find(@items.item_status)
     @deliveryarea = Deliveryarea.find(@items.delivery_area)
     @deliverycharge = Deliverycharge.find(@items.delivery_charge)
@@ -57,9 +53,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
-    @item.destroy
-    redirect_to root_path
+    if set_item.destroy
+      redirect_to root_path 
+    else
+      render :show
+    end
   end
 
   private
@@ -70,5 +68,9 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:item_name,:item_text,:item_status,:delivery_charge,:delivery_area,:delivery_day,:price, :category_id, :brand, item_images_attributes: [:url, :id, :_destroy]).merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @items = Item.find(params[:id])
   end
 end
