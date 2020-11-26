@@ -1,0 +1,127 @@
+.Item-Box-Container
+  .Item-Main-Content
+    .Content-Leftqq
+    .Content-Right
+      .Top-Content
+        .Item-Box
+          %h2.Item-Box__Name 
+            = @items.item_name
+          .Item-Box__Body
+
+            .Owl-Stage-Outer
+              .Owl-Stage
+                - @items.item_images.first(1).each do |image|
+                  = image_tag image.url.url, class: "Owl-Lazy"
+                .Owl-Item-Inner    
+                  - @items.item_images.drop(1).each do |image|
+                    = image_tag image.url.url, width: '100px', height: '100px', class: "under-Lazy"
+          .Item-Box__Price
+            %span
+            .Price
+              = @items.price 
+              円
+            .Item-Box-Price-Detail
+              %span
+                (税込)
+              %span
+                送料込み
+          .Item-Detail 
+            = @items.item_text
+          .Table
+            %table
+              %tbody
+                %tr
+                  %th 出品者
+                  %td
+                    = @items.user.nickname
+                %tr
+                  %th カテゴリー
+                  %td
+                    = link_to "#", class: "cate" do
+                      = @parent.name
+                    %br/
+                    = link_to "#", class: "cate" do
+                      = @child.name
+                    %br/
+                    = link_to "#", class: "cate" do
+                      = @grandchild.name
+                %tr
+                  %th ブランド
+                  %td 
+                    = @items.brand
+                %tr
+                  %th 商品の状態
+                  %td 
+                    = @itemstatus.name
+                %tr
+                  %th 配送料の負担
+                  %td 
+                    = @deliverycharge.name
+                %tr
+                  %th 発送元の地域
+                  %td 
+                    = @deliveryarea.name
+                %tr
+                  %th 発送日の目安
+                  %td 
+                    = @deliveryday.name
+          .Optional-Area
+            %ul.favorite
+              %li#Like-Btn.Optional-Btn.Like-Btn
+                %i.fa.fa-star
+                お気に入り 10
+          -if user_signed_in? && current_user.id == @items.user_id
+            = link_to edit_item_path(@items), class: "item-buy-btn" do
+              編集
+            = link_to item_path(@items), method: :delete, class: "item-buy-btn" do
+              削除
+          - else
+            = link_to "#", class: "item-buy-btn" do
+              購入画面に進む
+            %ul
+            .Optional
+              %li.Optional-Btn
+                = link_to "#", class: "Inappropriate" do
+                  %i.fa.fa-flag
+                  不適切な商品の通報
+        .Comment-Box
+          %ul.Comment-Contents
+          %form#New_Comment.New_Comment{action: "#", method: "#"}
+            %input{type: "hidden", name: "__csrf_value", value: ""}/
+            %input{type: "hidden", name: "item_id", value: ""}/
+            %textarea#comment_body{name: "comment[body]", class: "comment_body", required: "required"}
+            %p.Notice-Msg
+              相手のことを考え丁寧なコメントを心がけましょう。
+              %br/
+              不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            %br/
+            %button.Comment-Btn{type: "submit", name: "button"}
+              %i.fa.fa-comment
+              コメントする
+      %ul.Links
+        %li.back-Btn
+          = link_to "#", class: "link-Btn" do
+            %i.fa.fa-angle-left
+            %span 前の商品
+        %li.Next-Btn
+          = link_to "#", class: "link-Btn" do
+            %span
+            後ろの商品
+            %i.fa.fa-angle-right
+      .Related-Items
+        = link_to "#", class: "Relateds" do
+          玩具をもっと見る
+        .ProductLists
+          .ProductList
+            = link_to "#", class: "User-Itme-Id" do
+              %figure.ProductList--Img
+                = image_tag "https://static.mercdn.net/item/detail/orig/photos/m49251097434_1.jpg?1603269303", class: "User-Itme-Id-img"
+              .ProductList--Body
+                %h3.Name ガンプラ RE/100 MSN-04II ナイチンゲール
+                .Details
+                  %ul
+                    %li 12500円
+                    %li
+                      %i.fa.fa-star.likeIcon
+                      4
+                  %p (税込)
