@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
   before_action :set_category, only: [:new, :create, :sell ]
-  # before_action :set_item, except: [:index, :new, :create]
   
   def index
     @items = Item.all
@@ -72,9 +71,4 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:item_name,:item_text,:item_status,:delivery_charge,:delivery_area,:delivery_day,:price, :category_id, :brand, item_images_attributes: [:url, :id, :_destroy]).merge(user_id: current_user.id)
   end
-
-  # def set_item
-  #   @item = Item.find(params[:id])
-  # end
-
 end
