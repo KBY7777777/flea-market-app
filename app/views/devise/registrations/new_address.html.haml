@@ -96,7 +96,7 @@
         .Form-Group
           = f.label "address2_label", "電話"
           %span.Form-Arbitrary 任意
-          = f.number_field "tel", placeholder: "例) 1234567890", class: "Input-Default", value: ""
+          = f.text_field "tel", placeholder: "例) 1234567890", class: "Input-Default", value: ""
         = f.submit "登録する", class: "Btn-Default Btn-Red"
 
 %footer.Single-Footer

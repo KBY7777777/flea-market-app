@@ -55,12 +55,13 @@ describe Address do
       address.valid?
       expect(address.errors[:house_number]).to include("を入力してください")
     end
-    
-    it "telが半角数字でなければ登録できないこと" do
-      address = build(:address, tel: "０００００００００００") 
-      address.valid?
-      expect(address.errors[:tel]).to include("半角数字のみが使用できます")
-    end
+
+    #L96〜のケースと内容重複
+    # it "telが半角数字でなければ登録できないこと" do
+    #   address = build(:address, tel: "０００００００００００") 
+    #   address.valid?
+    #   expect(address.errors[:tel]).to include("半角数字のみが使用できます")
+    # end
 
     it "destination_family_nameが全角入力でなければ登録できないこと" do
       address = build(:address, destination_family_name: "ｱｲｳｴｵ") 
@@ -68,7 +69,7 @@ describe Address do
       expect(address.errors[:destination_family_name]).to include("全角ひらがな、全角カタカナ、漢字のみが使用できます")
     end
 
-    it "destination_family_nameが全角入力でなければ登録できないこと" do
+    it "destination_first_nameが全角入力でなければ登録できないこと" do
       address = build(:address, destination_first_name: "ｱｲｳｴｵ") 
       address.valid?
       expect(address.errors[:destination_first_name]).to include("全角ひらがな、全角カタカナ、漢字のみが使用できます")
@@ -96,6 +97,18 @@ describe Address do
       address = build(:address, tel: "０１０００００００００")
       address.valid?
       expect(address.errors[:tel]).to include("半角数字のみが使用できます")
+    end
+
+    #追加
+    it "telは空でも登録できる" do
+      address = build(:address, tel: "")
+      expect(address).to be_valid
+    end
+
+    #追加
+    it "buildingは空でも登録できる" do
+      address = build(:address, building: "")
+      expect(address).to be_valid
     end
 
   end
