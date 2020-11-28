@@ -45,12 +45,12 @@
             %span.Iten-Up__Require 必須
           .Product-Listing__Inside__Write
             .Product-Listing__Inside__Write__form
-              = form.text_area :"item_text", class:"Item-Form-Expect", placeholder: "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。\n"
+              = form.text_area :"item_text", class:"Item-Form-Expect", id:"js-count",placeholder: "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。\n"
           .Writing-Max
-            -# %span> 0
-            -# \/
-            -# /
-            -# 1000
+            %span.show-count 0
+            \/
+            /
+            1000
       %hr.Product-Listing-UnderLine
       .Product-Listing
         %p.Product-Listing__Subtitle 商品の詳細
@@ -131,17 +131,18 @@
             .Product-Listing__Inside__Title.Price-Display
               = form.label :"販売価格"
               %span.Iten-Up__Require 必須
-              %span.Money-Unit ¥
+              
             .Product-Listing__Inside__Write
+              %span.Money-Unit ¥
               .Price-Form
-                = form.text_field :"price",  placeholder: "0"
+                = form.text_field :"price",  placeholder: "0" , class:"Item_Exhibition_Price"
           .Product-Listing__Price__Form
             %div 販売手数料（10%）
-            %span —
+            %span#sales_commission_price
           %hr.Product-Listing-UnderLine
           .Product-Listing__Price__Form
             %div 販売利益
-            %span —
+            %span#sales_gain_price
         .Product-Listing__Send
           = form.submit "次へ進む", class:"Exhibit-Button"
           = link_to "もどる", "/", class: "Blue-Character" 
