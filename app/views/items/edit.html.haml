@@ -40,7 +40,7 @@
         = form.fields_for :item_images do |i|
           = i.file_field :url, value:"", data: {index: i.index}, class: "hidden-field count-field", name: "item[item_images_attributes][#{i.index}][url]", id: "item_images_attributes_#{i.index}_url", style: "display:none"
           - if i.object.persisted?
-            = i.check_box :_destroy, data:{ index: i.index }
+            = i.check_box :_destroy, data:{ index: i.index }, style: "display:none"
         
       %hr.Product-Listing-UnderLine
       .Product-Listing
