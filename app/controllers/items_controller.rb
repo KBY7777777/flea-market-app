@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   before_action :set_category, only: [:new, :create, :sell, :edit, :update]
   before_action :set_item, only: [:show, :destroy]
+  before_action :edit_item, only: [:edit, :update]
+  
   
   def index
     @items = Item.all
@@ -37,7 +39,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
     @item.item_images.build
 
     #カテゴリーデータ取得
@@ -53,8 +54,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
-    # binding.pry
     if @item.update(item_params)
       redirect_to mypages_path{current_user.id}
     else
@@ -93,4 +92,9 @@ class ItemsController < ApplicationController
   def set_item
     @items = Item.find(params[:id])
   end
+
+  def edit_item
+    @item = Item.find(params[:id])
+  end
+
 end
