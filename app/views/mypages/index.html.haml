@@ -19,7 +19,7 @@
         = link_to "/" do
           %figure
             = image_tag "//static.mercdn.net/images/member_photo_noimage_thumb.png"
-          %h2.bold Gudetama
+          %h2.bold=current_user.nickname
           .MypageNumber
             %div
               評価
@@ -61,7 +61,7 @@
                 下書き一覧
                 %i.icon-arrow-right
             %li
-              = link_to "#", class: "MypageNavListItem" do
+              = link_to display_mypages_path, class: "MypageNavListItem" do
                 出品した商品 - 出品中
                 %i.icon-arrow-right
             %li
