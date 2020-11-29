@@ -1,4 +1,4 @@
--#商品出品ページ
+-#商品編集ページ
 
 
 .Multiple-Container
@@ -20,16 +20,27 @@
             枚までアップロードできます
           .label-content
           #previews
-            %label.Product-Listing__Inside__FhotoForm{for: "item_images_attributes_0_url", class: "label-box", id: "label-box--0"}
+            - @item.item_images.each_with_index do |image, i|
+              - if image.persisted?
+                .preview-box{data: {index: i }}
+                  .upper-box
+                    = image_tag "#{image.url.url}",value:"", data: {index: i }, alt: "preview", class: "count-field"
+                  .lower-box
+                    .update-box
+                      %label.edit_btn 編集
+                    .delete-box
+                      .delete-btn
+                        %span 削除
+            %label.Product-Listing__Inside__FhotoForm{for: "item_images_attributes_#{@item.item_images.length - 1}_url", class: "label-box", id: "label-box--#{@item.item_images.length - 1}"}
               .FhotoForm__Image-UpLoad
                 %svg.FhotoForm__Image-UpLoad__Icon
                   %path{d: "M19.3,5H16.73l-.8-1.61A.7.7,0,0,0,15.3,3H8.7a.7.7,0,0,0-.63.39L7.27,5H4.7A2.7,2.7,0,0,0,2,7.7V18.3A2.7,2.7,0,0,0,4.7,21H19.3A2.7,2.7,0,0,0,22,18.3V7.7A2.7,2.7,0,0,0,19.3,5ZM12,17.3A4.3,4.3,0,1,1,16.3,13,4.31,4.31,0,0,1,12,17.3Z"}
                 %p.FhotoForm__Image-UpLoad__Expect
                   クリックしてファイルをアップロード
         = form.fields_for :item_images do |i|
-          = i.file_field :url, value:"", data: {index: i.index}, class: "hidden-field count-field", name: "item[item_images_attributes][0][url]", id: "item_images_attributes_0_url", style: "display:none"
+          = i.file_field :url, value:"", data: {index: i.index}, class: "hidden-field count-field", name: "item[item_images_attributes][#{i.index}][url]", id: "item_images_attributes_#{i.index}_url", style: "display:none"
           - if i.object.persisted?
-            = i.check_box :_destroy, data:{ index: i.index }, class: "update-box"
+            = i.check_box :_destroy, data:{ index: i.index }, style: "display:none"
         
       %hr.Product-Listing-UnderLine
       .Product-Listing
@@ -73,11 +84,12 @@
             = form.label :"カテゴリー" 
             %span.Iten-Up__Require 必須
           .Product-Listing__Inside__categry
-            .Product-Listing__Inside__Select__Form
-              = form.select :category_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]}),{include_blank: "選択してください"}, { class: "parent_category_box", id: "parent_category"}
+            .Product-Listing__Inside__Select__Form.partent_box
+              = form.select :category_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]},selected:@category_parent.id),{include_blank: "選択してください"}, { class: "parent_category_box", id: "parent_category",name:""}
             .Product-Listing__Inside__Select__Form.children_box
-
+              =form.collection_select :category_id, @category_children, :id, :name, {},{class:"item_input__body__category__children--select", id:"children_category",name:""}
             .Product-Listing__Inside__Select__Form.grandchildren_box 
+              =form.collection_select :category_id, @category_grandchildren, :id, :name, {},{class:"item_input__body__category__grandchildren--select", id:"grandchildren_category"}
           - if @item.errors.any?
             .error_explanation
               %ul

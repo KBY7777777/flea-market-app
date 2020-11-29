@@ -1,0 +1,42 @@
+//出品中確認ページ
+
+.Product-Listings{
+  .Display-Title-Box{
+    text-align: center;
+    height: 30px;
+    h2.Display-Title-Name {
+      //border-bottom: solid 2px #ea352d;
+      display: inline-block;
+      width: 70%;
+      text-align: center;
+      margin: 0 auto;
+      font-size: 24px;
+    }
+  }
+  .Display-Item{
+    margin-bottom: 20px;
+    .Tab-Content{
+      height: 100px;
+      display: flex;
+      &__Image {
+        width: 120px;
+        height: 100%;
+        display: inline-block;
+        margin-left: 20px;
+      }
+      &__title{
+        color: black;
+        display: inline-block;
+      }
+    }
+   }
+}
+
+.Box-Image{
+  width: 95%;
+  height: 95%;
+}
+
+.Tab{
+  text-decoration: none;
+}

@@ -28,9 +28,10 @@ Rails.application.routes.draw do
 
   end
 
-  resources :mypages do
+  resources :mypages , only: :show do
     collection do
       get 'index'
+      get 'display'
       get 'creditcard'
       get 'logout'
       get 'payment'
