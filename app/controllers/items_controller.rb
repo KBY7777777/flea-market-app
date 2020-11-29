@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_category, only: [:new, :create, :sell ]
+  before_action :set_category, only: [:new, :create, :sell, :edit, :update]
   before_action :set_item, only: [:show, :destroy]
   
   def index
@@ -37,9 +37,29 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
+    @item.item_images.build
+
+    #カテゴリーデータ取得
+    @grandchild_category = @item.category
+    @child_category = @grandchild_category.parent
+    @category_parent = @child_category.parent
+    #カテゴリー一覧を作成
+    @category = Category.find(params[:id])
+    # 紐づく孫カテゴリーの親（子カテゴリー）の一覧を配列で取得
+    @category_children = @item.category.parent.parent.children
+    # 紐づく孫カテゴリーの一覧を配列で取得
+    @category_grandchildren = @item.category.parent.children
   end
 
   def update
+    @item = Item.find(params[:id])
+    # binding.pry
+    if @item.update(item_params)
+      redirect_to mypages_path{current_user.id}
+    else
+      render :edit
+    end
   end
 
   def show
