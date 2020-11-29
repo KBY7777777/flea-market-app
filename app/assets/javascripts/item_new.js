@@ -27,6 +27,28 @@ $(function(){
       return html;
     }
 
+    // 投稿編集時
+    //items/:i/editページへリンクした際のアクション
+    if (window.location.href.match(/\/items\/\d+\/edit/)){
+      //登録済み画像のプレビュー表示欄の要素を取得する
+      var prevContent = $('.label-content').prev();
+      labelWidth = (620 - $(prevContent).css('width').replace(/[^0-9]/g, ''));
+      $('.label-content').css('width', labelWidth);
+      //プレビューにidを追加
+      $('.preview-box').each(function(index, box){
+        $(box).attr('id', `preview-box__${index}`);
+      })
+      //削除ボタンにidを追加
+      $('.delete-box').each(function(index, box){
+        $(box).attr('id', `delete_btn_${index}`);
+      })
+      var count = $('.preview-box').length;
+      //プレビューが5あるときは、投稿ボックスを消しておく
+      if (count == 5) {
+        $('.label-content').hide();
+      }
+    }
+
     // ラベルのwidth操作
     function setLabel() {
       //プレビューボックスのwidthを取得し、maxから引くことでラベルのwidthを決定
@@ -62,9 +84,7 @@ $(function(){
           lastFileField.after(newFileFieldHtml);
         }
 
-        // if($("").length >= 5
-        // return false;
-        // )
+       
         //イメージを追加
         $(`#preview-box__${id} img`).attr('src', `${image}`);
         // var count = $('.preview-box').length;
@@ -92,15 +112,18 @@ $(function(){
 
     // 画像の削除
     $(document).on('click', '.delete-box', function() {
+      
       var count = $('.count-field:last').data('index');
       setLabel(count);
       //item_images_attributes_${id}_image から${id}に入った数字のみを抽出
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
+      console.log(id)
       //取得したidに該当するプレビューを削除
       $(`#preview-box__${id}`).remove();
       //フォームの中身を削除 
       $(`#item_images_attributes_${id}_url`).remove();
-
+      //チェックボックスのID.prop
+      $(`#item_item_images_attributes_${id}__destroy`).prop('checked',true);
       //削除時のラベル操作
       var count = $('.count-field:last').data('index');
       //10個めが消されたらラベルを表示
