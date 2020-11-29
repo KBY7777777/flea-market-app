@@ -41,6 +41,16 @@ ja:
         municipality: "市区町村"
         house_number: "番地"
         tel: "電話"
+      item:
+        item_name: "商品名"
+        item_text: "商品の説明"
+        category: "カテゴリー"
+        brand: "ブランド"
+        item_status: "商品の状態"
+        delivery_charge: "配送料の負担"
+        delivery_area: "発送元の地域"
+        delivery_day: "発送までの日数"
+        price: "販売価格"
     models:
       user: "ユーザ"
   devise:
