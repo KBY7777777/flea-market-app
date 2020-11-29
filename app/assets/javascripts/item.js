@@ -136,7 +136,6 @@ $(document).ready(function(){
   $('.show-count').text(editcount);
   $('#js-count').keyup(function(){
     var count =  $(this).val().replace(/\s+/g,'').length;
-    console.log(count)
     $('.show-count').text(count);
   });
 });
