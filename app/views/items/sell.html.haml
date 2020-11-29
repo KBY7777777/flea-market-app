@@ -30,15 +30,23 @@
           = i.file_field :url, value:"", data: {index: i.index}, class: "hidden-field count-field", name: "item[item_images_attributes][0][url]", id: "item_images_attributes_0_url", style: "display:none"
           - if i.object.persisted?
             = i.check_box :_destroy, data:{ index: i.index }, class: "update-box"
+        
       %hr.Product-Listing-UnderLine
       .Product-Listing
         .Product-Listing__Inside
           .Product-Listing__Inside__Title
             = form.label :"商品名" 
             %span.Iten-Up__Require 必須
+          
           .Product-Listing__Inside__Write
             .Product-Listing__Inside__Write__form
               = form.text_field :"item_name", placeholder: "40文字まで"
+              - if @item.errors.any?
+                .error_explanation
+                  %ul
+                    - @item.errors.full_messages_for(:item_name).each do |message|
+                      %li{style: "color:red"}
+                        = message
         .Product-Listing__Inside
           .Product-Listing__Inside__Title
             = form.label :"商品の説明" 
@@ -51,6 +59,12 @@
             \/
             /
             1000
+          - if @item.errors.any?
+            .error_explanation
+              %ul
+                - @item.errors.full_messages_for(:item_text).each do |message|
+                  %li{style: "color:red"}
+                    = message
       %hr.Product-Listing-UnderLine
       .Product-Listing
         %p.Product-Listing__Subtitle 商品の詳細
@@ -64,7 +78,12 @@
             .Product-Listing__Inside__Select__Form.children_box
 
             .Product-Listing__Inside__Select__Form.grandchildren_box 
-
+          - if @item.errors.any?
+            .error_explanation
+              %ul
+                - @item.errors.full_messages_for(:category).each do |message|
+                  %li{style: "color:red"}
+                    = message
         .Product-Listing__Inside
           .Product-Listing__Inside__Title
             = form.label :"ブランド" 
@@ -72,6 +91,12 @@
           .Product-Listing__Inside__Write
             .Product-Listing__Inside__Write__form
               = form.text_field :brand ,class:"Input-Default",  placeholder: "例) シャネル"
+            - if @item.errors.any?
+              .error_explanation
+                %ul
+                  - @item.errors.full_messages_for(:brand).each do |message|
+                    %li{style: "color:red"}
+                      = message
         .Product-Listing__Inside
           .Product-Listing__Inside__Title
             = form.label :"商品の状態"
@@ -79,6 +104,12 @@
           .Product-Listing__Inside__Select
             .Product-Listing__Inside__Select__Form
               = form.collection_select :item_status, Itemstatus.all, :id, :name, {prompt:"選択してください"}
+            - if @item.errors.any?
+              .error_explanation
+                %ul
+                  - @item.errors.full_messages_for(:item_status).each do |message|
+                    %li{style: "color:red"}
+                      = message
       %hr.Product-Listing-UnderLine
       .Product-Listing
         %p.Product-Listing__Subtitle
@@ -95,6 +126,12 @@
           .Product-Listing__Inside__Select
             .Product-Listing__Inside__Select__Form
               = form.collection_select :delivery_charge, Deliverycharge.all, :id, :name, {prompt:"選択してください"}
+            - if @item.errors.any?
+              .error_explanation
+                %ul
+                  - @item.errors.full_messages_for(:delivery_charge).each do |message|
+                    %li{style: "color:red"}
+                      = message
         .Product-Listing-Wrap-Insid
           .Product-Listing__Inside__Title
             = form.label :"発送元の地域"
@@ -102,6 +139,12 @@
           .Product-Listing__Inside__Select
             .Product-Listing__Inside__Select__Form
               = form.collection_select :delivery_area, Deliveryarea.all, :id, :name, {prompt:"選択してください"}
+            - if @item.errors.any?
+              .error_explanation
+                %ul
+                  - @item.errors.full_messages_for(:delivery_area).each do |message|
+                    %li{style: "color:red"}
+                      = message
         .Product-Listing__Inside
           .Product-Listing__Inside__Title
             = form.label :"発送までの日数"
@@ -109,6 +152,12 @@
           .Product-Listing__Inside__Select
             .Product-Listing__Inside__Select__Form
               = form.collection_select :delivery_day, Deliveryday.all, :id, :name, {prompt:"選択してください"}
+            - if @item.errors.any?
+              .error_explanation
+                %ul
+                  - @item.errors.full_messages_for(:delivery_day).each do |message|
+                    %li{style: "color:red"}
+                      = message
       %hr.Product-Listing-UnderLine
       .Product-Listing
         %p.Product-Listing__Subtitle
@@ -136,6 +185,12 @@
               %span.Money-Unit ¥
               .Price-Form
                 = form.text_field :"price",  placeholder: "0" , class:"Item_Exhibition_Price"
+          - if @item.errors.any?
+            .error_explanation.price_error
+              %ul
+                - @item.errors.full_messages_for(:price).each do |message|
+                  %li{style: "color:red"}
+                    = message
           .Product-Listing__Price__Form
             %div 販売手数料（10%）
             %span#sales_commission_price
