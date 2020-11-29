@@ -1,0 +1,23 @@
+.Multiple-Container
+
+  = render partial: "/layouts/userheader"
+    
+  .Product-Listings
+    .Product-Listing.Display-Title-Box
+      %h2.Display-Title-Name
+        = @nickname
+        さんの出品中の商品
+    %hr.Product-Listing-UnderLine
+    .Display-Item
+      - @items.each do |item| 
+        .Tab-Content
+          = link_to item_path(item.id) ,class:"Tab" do
+            .Tab-Content__Image
+              =image_tag "#{item.item_images[0].url}",class:"Box-Image"
+            .Tab-Content__title= item.item_name
+    
+  %footer.Single-Footer
+
+    = render partial: "/layouts/userfooter"
+  
+
