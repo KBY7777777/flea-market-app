@@ -1,0 +1,236 @@
+-#商品編集ページ
+
+
+.Multiple-Container
+
+  = render partial: "/layouts/userheader"
+
+  .Product-Listings
+    = form_with model: @item, html: {id: "item-dropzone"}, local: true do |form|  
+      .Product-Listing
+        .Product-Listing__Inside
+          .Product-Listing__Inside__Title
+            %label 出品画像
+            %span.Iten-Up__Require 必須
+          %p.Product-Listing__Inside__MaxFhoto
+            最大
+            /
+            5
+            /
+            枚までアップロードできます
+          .label-content
+          #previews
+            - @item.item_images.each_with_index do |image, i|
+              - if image.persisted?
+                .preview-box{data: {index: i }}
+                  .upper-box
+                    = image_tag "#{image.url.url}",value:"", data: {index: i }, alt: "preview", class: "count-field"
+                  .lower-box
+                    .update-box
+                      %label.edit_btn 編集
+                    .delete-box
+                      .delete-btn
+                        %span 削除
+            %label.Product-Listing__Inside__FhotoForm{for: "item_images_attributes_#{@item.item_images.length - 1}_url", class: "label-box", id: "label-box--#{@item.item_images.length - 1}"}
+              .FhotoForm__Image-UpLoad
+                %svg.FhotoForm__Image-UpLoad__Icon
+                  %path{d: "M19.3,5H16.73l-.8-1.61A.7.7,0,0,0,15.3,3H8.7a.7.7,0,0,0-.63.39L7.27,5H4.7A2.7,2.7,0,0,0,2,7.7V18.3A2.7,2.7,0,0,0,4.7,21H19.3A2.7,2.7,0,0,0,22,18.3V7.7A2.7,2.7,0,0,0,19.3,5ZM12,17.3A4.3,4.3,0,1,1,16.3,13,4.31,4.31,0,0,1,12,17.3Z"}
+                %p.FhotoForm__Image-UpLoad__Expect
+                  クリックしてファイルをアップロード
+        = form.fields_for :item_images do |i|
+          = i.file_field :url, value:"", data: {index: i.index}, class: "hidden-field count-field", name: "item[item_images_attributes][#{i.index}][url]", id: "item_images_attributes_#{i.index}_url", style: "display:none"
+          - if i.object.persisted?
+            = i.check_box :_destroy, data:{ index: i.index }
+        
+      %hr.Product-Listing-UnderLine
+      .Product-Listing
+        .Product-Listing__Inside
+          .Product-Listing__Inside__Title
+            = form.label :"商品名" 
+            %span.Iten-Up__Require 必須
+          
+          .Product-Listing__Inside__Write
+            .Product-Listing__Inside__Write__form
+              = form.text_field :"item_name", placeholder: "40文字まで"
+              - if @item.errors.any?
+                .error_explanation
+                  %ul
+                    - @item.errors.full_messages_for(:item_name).each do |message|
+                      %li{style: "color:red"}
+                        = message
+        .Product-Listing__Inside
+          .Product-Listing__Inside__Title
+            = form.label :"商品の説明" 
+            %span.Iten-Up__Require 必須
+          .Product-Listing__Inside__Write
+            .Product-Listing__Inside__Write__form
+              = form.text_area :"item_text", class:"Item-Form-Expect", id:"js-count",placeholder: "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。\n"
+          .Writing-Max
+            %span.show-count 0
+            \/
+            /
+            1000
+          - if @item.errors.any?
+            .error_explanation
+              %ul
+                - @item.errors.full_messages_for(:item_text).each do |message|
+                  %li{style: "color:red"}
+                    = message
+      %hr.Product-Listing-UnderLine
+      .Product-Listing
+        %p.Product-Listing__Subtitle 商品の詳細
+        .Product-Listing__Inside
+          .Product-Listing__Inside__Title
+            = form.label :"カテゴリー" 
+            %span.Iten-Up__Require 必須
+          .Product-Listing__Inside__categry
+            .Product-Listing__Inside__Select__Form.partent_box
+              = form.select :category_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]},selected:@category_parent.id),{include_blank: "選択してください"}, { class: "parent_category_box", id: "parent_category",name:""}
+            .Product-Listing__Inside__Select__Form.children_box
+              =form.collection_select :category_id, @category_children, :id, :name, {},{class:"item_input__body__category__children--select", id:"children_category",name:""}
+            .Product-Listing__Inside__Select__Form.grandchildren_box 
+              =form.collection_select :category_id, @category_grandchildren, :id, :name, {},{class:"item_input__body__category__grandchildren--select", id:"grandchildren_category"}
+          - if @item.errors.any?
+            .error_explanation
+              %ul
+                - @item.errors.full_messages_for(:category).each do |message|
+                  %li{style: "color:red"}
+                    = message
+        .Product-Listing__Inside
+          .Product-Listing__Inside__Title
+            = form.label :"ブランド" 
+            %span.Iten-Up__Optinal 任意
+          .Product-Listing__Inside__Write
+            .Product-Listing__Inside__Write__form
+              = form.text_field :brand ,class:"Input-Default",  placeholder: "例) シャネル"
+            - if @item.errors.any?
+              .error_explanation
+                %ul
+                  - @item.errors.full_messages_for(:brand).each do |message|
+                    %li{style: "color:red"}
+                      = message
+        .Product-Listing__Inside
+          .Product-Listing__Inside__Title
+            = form.label :"商品の状態"
+            %span.Iten-Up__Require 必須
+          .Product-Listing__Inside__Select
+            .Product-Listing__Inside__Select__Form
+              = form.collection_select :item_status, Itemstatus.all, :id, :name, {prompt:"選択してください"}
+            - if @item.errors.any?
+              .error_explanation
+                %ul
+                  - @item.errors.full_messages_for(:item_status).each do |message|
+                    %li{style: "color:red"}
+                      = message
+      %hr.Product-Listing-UnderLine
+      .Product-Listing
+        %p.Product-Listing__Subtitle
+          配送について
+        %a{href: "#", rel: "noopener noreferrer", target: "_blank"}
+          %svg.Furima-Guide{"aria-hidden" => "true", fill: "#222222", "fill-rule" => "evenodd", height: "24", viewbox: "0 0 24 24", width: "24"}
+            %path{d: "M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18.6A8.6,8.6,0,1,1,20.6,12,8.61,8.61,0,0,1,12,20.6Z"}
+            %path{d: "M14.18,7.52A2.72,2.72,0,0,0,13.25,7a3.16,3.16,0,0,0-1.17-.2A3.12,3.12,0,0,0,10,7.43,2.92,2.92,0,0,0,9,9.27c0,.12,0,.18.12.19l1.4.22c.09,0,.15,0,.17-.13a1.63,1.63,0,0,1,.44-.91A1.2,1.2,0,0,1,12,8.31a1.17,1.17,0,0,1,.88.33,1.15,1.15,0,0,1,.33.83,1.62,1.62,0,0,1-.12.61,3.46,3.46,0,0,1-.41.67l-1.23,1.67a2.53,2.53,0,0,0-.31.58,2.51,2.51,0,0,0-.09.75v.63a.14.14,0,0,0,.16.16h1.44a.14.14,0,0,0,.16-.16v-.45a1.7,1.7,0,0,1,.07-.56,1.31,1.31,0,0,1,.24-.42l1.22-1.67A2.93,2.93,0,0,0,15,9.46a2.62,2.62,0,0,0-.22-1.09A2.43,2.43,0,0,0,14.18,7.52Z"}
+            %circle{cx: "12", cy: "16.24", r: "1"}
+        .Product-Listing__Inside
+          .Product-Listing__Inside__Title
+            = form.label :"配送料の負担"
+            %span.Iten-Up__Require 必須
+          .Product-Listing__Inside__Select
+            .Product-Listing__Inside__Select__Form
+              = form.collection_select :delivery_charge, Deliverycharge.all, :id, :name, {prompt:"選択してください"}
+            - if @item.errors.any?
+              .error_explanation
+                %ul
+                  - @item.errors.full_messages_for(:delivery_charge).each do |message|
+                    %li{style: "color:red"}
+                      = message
+        .Product-Listing-Wrap-Insid
+          .Product-Listing__Inside__Title
+            = form.label :"発送元の地域"
+            %span.Iten-Up__Require 必須
+          .Product-Listing__Inside__Select
+            .Product-Listing__Inside__Select__Form
+              = form.collection_select :delivery_area, Deliveryarea.all, :id, :name, {prompt:"選択してください"}
+            - if @item.errors.any?
+              .error_explanation
+                %ul
+                  - @item.errors.full_messages_for(:delivery_area).each do |message|
+                    %li{style: "color:red"}
+                      = message
+        .Product-Listing__Inside
+          .Product-Listing__Inside__Title
+            = form.label :"発送までの日数"
+            %span.Iten-Up__Require 必須
+          .Product-Listing__Inside__Select
+            .Product-Listing__Inside__Select__Form
+              = form.collection_select :delivery_day, Deliveryday.all, :id, :name, {prompt:"選択してください"}
+            - if @item.errors.any?
+              .error_explanation
+                %ul
+                  - @item.errors.full_messages_for(:delivery_day).each do |message|
+                    %li{style: "color:red"}
+                      = message
+      %hr.Product-Listing-UnderLine
+      .Product-Listing
+        %p.Product-Listing__Subtitle
+          価格（¥
+          /
+          300
+          /
+          〜
+          /
+          9,999,999
+          /
+          ）
+          %a{href: "#", rel: "noopener noreferrer", target: "_blank"}
+            %svg.Furima-Guide{"aria-hidden" => "true", fill: "#222222", "fill-rule" => "evenodd", height: "24", viewbox: "0 0 24 24", width: "24"}
+              %path{d: "M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18.6A8.6,8.6,0,1,1,20.6,12,8.61,8.61,0,0,1,12,20.6Z"}
+              %path{d: "M14.18,7.52A2.72,2.72,0,0,0,13.25,7a3.16,3.16,0,0,0-1.17-.2A3.12,3.12,0,0,0,10,7.43,2.92,2.92,0,0,0,9,9.27c0,.12,0,.18.12.19l1.4.22c.09,0,.15,0,.17-.13a1.63,1.63,0,0,1,.44-.91A1.2,1.2,0,0,1,12,8.31a1.17,1.17,0,0,1,.88.33,1.15,1.15,0,0,1,.33.83,1.62,1.62,0,0,1-.12.61,3.46,3.46,0,0,1-.41.67l-1.23,1.67a2.53,2.53,0,0,0-.31.58,2.51,2.51,0,0,0-.09.75v.63a.14.14,0,0,0,.16.16h1.44a.14.14,0,0,0,.16-.16v-.45a1.7,1.7,0,0,1,.07-.56,1.31,1.31,0,0,1,.24-.42l1.22-1.67A2.93,2.93,0,0,0,15,9.46a2.62,2.62,0,0,0-.22-1.09A2.43,2.43,0,0,0,14.18,7.52Z"}
+              %circle{cx: "12", cy: "16.24", r: "1"}
+        .Product-Listing__Price
+          .Product-Listing__Price__Form
+            .Product-Listing__Inside__Title.Price-Display
+              = form.label :"販売価格"
+              %span.Iten-Up__Require 必須
+              
+            .Product-Listing__Inside__Write
+              %span.Money-Unit ¥
+              .Price-Form
+                = form.text_field :"price",  placeholder: "0" , class:"Item_Exhibition_Price"
+          - if @item.errors.any?
+            .error_explanation.price_error
+              %ul
+                - @item.errors.full_messages_for(:price).each do |message|
+                  %li{style: "color:red"}
+                    = message
+          .Product-Listing__Price__Form
+            %div 販売手数料（10%）
+            %span#sales_commission_price
+          %hr.Product-Listing-UnderLine
+          .Product-Listing__Price__Form
+            %div 販売利益
+            %span#sales_gain_price
+        .Product-Listing__Send
+          = form.submit "次へ進む", class:"Exhibit-Button"
+          = link_to "もどる", "/", class: "Blue-Character" 
+                  
+          //%a.Blue-Character.Return-Button{href: "#"} もどる
+      .Product-Notes
+        %p
+          禁止されている
+          =link_to "行為", "#", class:"Blue-Character"
+          および
+          =link_to "出品物", "#", class:"Blue-Character"
+          を必ずご確認ください。 
+          =link_to "偽ブランド品", "#", class:"Blue-Character"
+          や
+          =link_to "盗品物", "#", class:"Blue-Character"
+          などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして
+          =link_to "加盟店規約", "#", class:"Blue-Character"
+          に同意したことになります。
+
+  %footer.Single-Footer
+
+    = render partial: "/layouts/userfooter"
+
+
