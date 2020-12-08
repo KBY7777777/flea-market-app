@@ -22,10 +22,13 @@
         %section.Payment-Common
           -# %ul.CreditCard
           %ul.Cards
-          =link_to "+クレジットカードを追加", "http://localhost:3000/mypages/creditcard", class: "CreditCard-Zone"
+          - if current_user.card.present?
+            =link_to "+登録クレジットカード情報", card_path(current_user.card), class: "CreditCard-Zone"
+          - else
+            =link_to "+クレジットカードを登録", new_card_path, class: "CreditCard-Zone"
         %section.Payment-Common
           %button.Btn{"data-test": "use-selected-payment-method", disabled: "disabled", tabindex: "-1", type: "button"} 選択した支払い方法を使う
-          =link_to "もどる", "http://localhost:3000/mypages/index.html", class: "Btn-Text"
+          =link_to "もどる", mypages_path, class: "Btn-Text"
 
 -#バナー+フッター
 = render '/layouts/main-footer'

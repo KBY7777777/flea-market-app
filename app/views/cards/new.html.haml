@@ -1,0 +1,76 @@
+-#クレジットカード登録画面
+
+-#トップページヘッダー
+.CreditCard
+  = render '/layouts/main-header'
+
+  .CreditCard-Main
+    .CreditCard-Primary
+      %section.CreditCard-Title
+        %h2 クレジットカード情報入力
+
+      = form_with url: pay_cards_path, local: true, method: :post, id: 'charge-form', name: "inputForm"  do |f|
+        .CreditCard-Secondary
+          %section.CreditCard-Number
+            .CreditCard-Number__Zone
+              .CreditCard-Number__Zone__Title
+                %label カード番号
+                %span 必須
+
+              .CreditCard-Number__Zone__Date{"data-test": "new-credit-card-no"}
+                .CreditCard-Number__Zone__Date__Frame
+                  = f.text_field :number, name: "card_number", id:"card_number", type: "text", placeholder: '半角数字のみ', class: 'Register__form__content__group__input', maxlength: "16"
+
+              =image_tag "https://web-jp-assets.mercdn.net/_next/static/images/visa-91c71914c6ae23d33f896e60bb1e3859.svg", class: "sc-gIjDWZ.bhyOwN", alt: "visa card"
+              =image_tag "https://web-jp-assets.mercdn.net/_next/static/images/mastercard-8b5b68c12b7a2fc8619c71f49ef9209b.svg", class: "sc-gIjDWZ.bhyOwN", alt: "mastercard"
+              =image_tag "https://web-jp-assets.mercdn.net/_next/static/images/saison-550107415f39b81fa19e87c96486ba20.svg", class: "sc-gIjDWZ.bhyOwN", alt: "saison card"
+              =image_tag "https://web-jp-assets.mercdn.net/_next/static/images/jcb-9ea981d20008c6545aa3afd1b3da9804.svg", class: "sc-gIjDWZ.bhyOwN", alt: "jcb card"
+              =image_tag "https://web-jp-assets.mercdn.net/_next/static/images/american_express-4df44c450653b0209850070ea5cf1264.svg", class: "sc-gIjDWZ.bhyOwN", alt: "american express card"
+              =image_tag "https://web-jp-assets.mercdn.net/_next/static/images/dinersclub-3d52fbb4b39dc998f039571f3314bfc7.svg", class: "sc-gIjDWZ.bhyOwN", alt: "dinersclub card"
+              =image_tag "https://web-jp-assets.mercdn.net/_next/static/images/discover-879b0b1c9f9a30159f09e9ef492ad349.svg", class: "sc-gIjDWZ.bhyOwN", alt: "discover card"
+
+            .CreditCard-Common
+              .CreditCard-Common__Text
+                %label 有効期限
+                %span 必須
+
+              .CreditCard-Expiration
+                .CreditCard-Expiration__Time{"data-test": "card-expiry-mm"}
+                  .CreditCard-Expiration__Time__Zone
+                    = f.select :exp_year, [["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029],["30",2030]], {}, class: 'CreditCard-Expiration__Time__Zone__Expire', name: "exp_year", id: "exp_year"
+                    -# = icon('fas', 'angle-down')    -#プルダウンの矢印表示（追って実装）
+                    %span 年
+
+                .CreditCard-Expiration__Time{"data-test": "card-expiry-yy"}
+                  .CreditCard-Expiration__Time__Zone
+                    = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]], {}, class: 'CreditCard-Expiration__Time__Zone__Expire', name: "exp_month", id: "exp_month"
+                    -# = icon('fas', 'angle-down')    -#プルダウンの矢印表示（追って実装）
+                    %span 月
+
+            #card_token
+
+            .CreditCard-Common
+              .CreditCard-Common__Text
+                %label セキュリティコード
+                %span 必須
+
+              .CreditCard-Security{"data-test": "card-security-code"}
+                .CreditCard-Security__Date
+                  = f.text_field :cvc, name: "cvc", id:"cvc", class:"cvc", type: "text", placeholder: 'カード背面4桁もしくは3桁の番号', class: 'Register__form__content__group__input', maxlength: "4"
+
+              .CreditCard-Description
+                .CreditCard-Description__Text
+                  %span ?
+                  カード裏面の番号とは？
+
+            = f.submit "登録する", class: "RegisterBtn",  id: "token_submit"
+
+            =link_to "もどる", "/jp/transaction/payment_method/m36272311004", class: "Back"
+
+-#バナー+フッター
+= render '/layouts/main-footer'
+
+-#「出品する」ボタン
+= render '/layouts/purchasebtn'
+
+

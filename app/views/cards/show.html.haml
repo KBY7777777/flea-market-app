@@ -1,0 +1,21 @@
+-#クレジットカード内容表示画面
+-#登録後の表示、削除機能もこの画面で
+-#（仮の画面として一旦作成し、機能のLGTM後に平仄を合わせる）
+
+.Mypage-main
+  .Mypage-main__contents.card-form
+    %h2.Payment__head 登録クレジットカード情報
+    %br
+    カード番号 ： 
+    = "**** **** **** " + @default_card_information.last4
+    %br
+    利用期限年月 ： 
+    - exp_month = @default_card_information.exp_month.to_s
+    -# - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+    - exp_year = @default_card_information.exp_year.to_s
+    -# = exp_month + " / " + exp_year
+    = exp_year + "年 " + exp_month + "月"
+    = form_with url: delete_cards_path, method: :post, id: 'charge-form', name: "inputForm", local: true do |f|
+      = f.submit "削除する", class: 'card-delete-btn'
+
+

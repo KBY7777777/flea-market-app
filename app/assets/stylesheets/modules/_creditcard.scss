@@ -173,7 +173,7 @@
                     position: relative;
                     width: inherit;
 
-                    &__Date {
+                    &__Expire {    //クラス名を変更
                       appearance: none;
                       background-color: #fff;
                       border: 1px solid #ccc;
@@ -186,7 +186,7 @@
                       margin: 0;
                       outline: none;
                       padding: 0 56px 0 16px;
-                      width: 100%;
+                      width: 80%;    //「年」「月」の表示が入る間隔を確保
                       flex: 1 1 0%;
                       font-family: inherit;
                       overflow: visible !important;
@@ -321,7 +321,7 @@
               }
             }
 
-            button {
+            .RegisterBtn {    //クラス名を変更
               background-color: #ea352d;
               color: #fff;
               margin-top: 32px;
