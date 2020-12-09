@@ -59,9 +59,6 @@
           .Purchase-Secondary__Up
             %h3.Purchase-Secondary__Up__Text 支払い方法
           .Purchase-Secondary__Down
-          - if @card.blank?
-            =link_to "+登録してください", new_card_path,  class: "Purchase-Secondary-Btn" 
-          - else
             %label カード番号
             = "**** **** **** " + @default_card_information.last4
             %br
