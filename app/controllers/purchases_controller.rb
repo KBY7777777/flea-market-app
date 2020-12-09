@@ -5,13 +5,14 @@ class PurchasesController < ApplicationController
   def new
     @purchase = Purchase.new
     @deliverycharge = Deliverycharge.find(@item.delivery_charge)
-    @user = current_user
+   
     @address = Address.find_by(user_id: current_user.id)
     @prefecture = Prefecture.find(@address.prefectures_area)
     
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
     @card = Card.find_by(user_id: current_user.id)
     if @card.blank?
+      redirect_to new_card_url 
     else
     customer = Payjp::Customer.retrieve(@card.customer_id)
     @default_card_information = customer.cards.retrieve(@card.payjp_id)
