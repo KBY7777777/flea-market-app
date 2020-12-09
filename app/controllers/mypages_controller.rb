@@ -4,7 +4,7 @@ class MypagesController < ApplicationController
   end
 
   def display
-    @items = Item.all
+    @items = Item.where(user:current_user)
     @nickname = current_user.nickname
   end
 

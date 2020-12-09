@@ -12,16 +12,28 @@
         .Purchase-Content
           .Image
             %figure.Image-Frame
-              = image_tag "https://static.mercdn.net/item/detail/orig/photos/m36272311004_1.jpg?1602627007"
+              = image_tag "#{@item.item_images[0].url}", class: "Owl-Lazy", width: '100px', height: '100px'
           .Text
-            %p.Text__Name 新品 高級 トート バッグ ショルダー 鞄 茶色 男性 女性 メンズ レディース
+            %p.Text__Name
+              = @item.item_name
             %p.Text__Money
-              %span.Text__Money__Shipping 送料込み (税込)
-              %span.Text__Money__Number ¥2,980
+              %span.Text__Money__Shipping
+                = @deliverycharge.name
+              %span.Text__Money__Number
+                = @item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse 
+                円
       %section.Purchase-Common
         .Money-Zone
-          %span 支払い金額
-          %span.Money-Zone__Number{"data-test": "transaction-buy-price-label"} ¥2,980
+          - if @deliverycharge.id = 2
+            %span 支払い金額
+            %span.Money-Zone__Number
+              = @item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse 
+              円+送料
+          - else
+            %span 支払い金額
+            %span.Money-Zone__Number
+              = @item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse
+              円(送料込み)
         %label.Point
           %label.Point-Zone{disabled: "disabled"}
             %span.Point-Zone__Sub
@@ -47,23 +59,38 @@
           .Purchase-Secondary__Up
             %h3.Purchase-Secondary__Up__Text 支払い方法
           .Purchase-Secondary__Down
-            =link_to "+登録してください", "#",  class: "Purchase-Secondary-Btn" 
+            %label カード番号
+            = "**** **** **** " + @default_card_information.last4
+            %br
+            %label 有効期限
+            - exp_month = @default_card_information.exp_month.to_s
+            - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+            = exp_month + " / " + exp_year
       %section.Purchase-Common
         .Purchase-Secondary
           .Purchase-Secondary__Up
             %h3.Purchase-Secondary__Up__Text 配送先
           .Purchase-Secondary__Down
-            =link_to "+登録してください", "#",  class: "Purchase-Secondary-Btn" 
+            〒
+            = @address.postal_code
+            = @prefecture.name
+            = @address.municipality
+            = @address.house_number
+            = @address.building
+            //=link_to "+登録してください", "#",  class: "Purchase-Secondary-Btn" 
       %section.Purchase-Common
+        
         .Purchase-Tertiary
           %p
             郵便局/コンビニ受取をご希望の方は、購入後に
             %b 取引画面
             から受取場所を変更をすることが可能です。出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください。
-          %p.Caution 支払い方法の入力を完了してください。
-          %p.Caution  配送先の入力を完了してください。
-          %button{"data-test": "transaction-buy-purchase", disabled: "disabled", tabindex: "-1", type: "button"} 購入する
-
+          = link_to item_purchases_path(@item,@purchase), method: "post" ,class: "purchase-btn" do
+            購入する
+          -# %p.Caution 支払い方法の入力を完了してください。
+          -# %p.Caution  配送先の入力を完了してください。
+          -# %button{"data-test": "transaction-buy-purchase", disabled: "disabled", tabindex: "-1", type: "button"} 購入する
+        
 %footer.Single-Footer
   = render partial: '/layouts/userfooter'
 

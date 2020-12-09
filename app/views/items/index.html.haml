@@ -109,15 +109,28 @@
         - @items.each do |item|
           .ProductList
             = link_to item_path(item), class:"a" do
-              .ProductList--img
-                = image_tag item.item_images[0].url.to_s, width: '200px', class: "img"
-              .ProductList--body
-                %h3.Name
-                .Details
-                  = item.item_name
-                = item.price
-                円
-                %p (税込)
+              -if Purchase.where(item_id:item.id).present?
+                .Sold-Out
+                  Sold out
+                .ProductList--img
+                  = image_tag item.item_images[0].url.to_s, width: '200px', class: "img"
+                .ProductList--body
+                  %h3.Name
+                  .Details
+                    = item.item_name
+                  = item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse
+                  円
+                  %p (税込)
+              -else
+                .ProductList--img
+                  = image_tag item.item_images[0].url.to_s, width: '200px', class: "img"
+                .ProductList--body
+                  %h3.Name
+                  .Details
+                    = item.item_name
+                  = item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse
+                  円
+                  %p (税込)
 
     %h2.Head ピックアップブランド
     .ProductBox
@@ -127,15 +140,28 @@
         - @items.each do |item|
           .ProductList
             = link_to item_path(item), class:"a" do
-              .ProductList--img
-                = image_tag item.item_images[0].url.to_s, width: '200px', class: "img"
-              .ProductList--body
-                %h3.Name
-                .Details
-                  = item.item_name
-                = item.price
-                円
-                %p (税込)
+              -if Purchase.where(item_id:item.id).present?
+                .Sold-Out
+                  Sold out
+                .ProductList--img
+                  = image_tag item.item_images[0].url.to_s, width: '200px', class: "img"
+                .ProductList--body
+                  %h3.Name
+                  .Details
+                    = item.item_name
+                  = item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse
+                  円
+                  %p (税込)
+              -else
+                .ProductList--img
+                  = image_tag item.item_images[0].url.to_s, width: '200px', class: "img"
+                .ProductList--body
+                  %h3.Name
+                  .Details
+                    = item.item_name
+                  = item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse
+                  円
+                  %p (税込)
 
         
 

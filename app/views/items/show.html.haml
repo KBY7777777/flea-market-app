@@ -18,7 +18,7 @@
           .Item-Box__Price
             %span
             .Price
-              = @items.price 
+              = @items.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse 
               円
             .Item-Box-Price-Detail
               %span
@@ -75,8 +75,11 @@
               編集
             = link_to item_path(@items), method: :delete, class: "item-buy-btn" do
               削除
+          -elsif @purchase.present?
+            %a.item-buy-btn.soldout-btn
+              売り切れました   
           - else
-            = link_to "#", class: "item-buy-btn" do
+            = link_to new_item_purchase_path(@items), class: "item-buy-btn" do
               購入画面に進む
             %ul
             .Optional
