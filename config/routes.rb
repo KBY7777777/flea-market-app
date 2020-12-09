@@ -11,12 +11,9 @@ Rails.application.routes.draw do
   root 'items#index'
 
   resources :items do
-    collection do
-    
-    #   get 'purchase'
-      get 'sell'
-    #   get 'item_details'
 
+    collection do
+      get 'sell'
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
@@ -25,6 +22,9 @@ Rails.application.routes.draw do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
+
+    resources :purchases, only: [:new, :create]
+    
 
   end
 
