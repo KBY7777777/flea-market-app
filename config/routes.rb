@@ -38,4 +38,12 @@ Rails.application.routes.draw do
     end
   end
 
+  #クレカ情報関連のrouting
+  resources :cards, only: [:index, :new, :show] do
+    collection do
+      post 'pay', to: 'cards#pay'
+      post 'delete', to: 'cards#delete'
+    end
+  end
+
 end

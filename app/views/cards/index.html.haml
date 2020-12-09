@@ -1,0 +1,17 @@
+-#クレカ機能のindex画面
+
+.Mypage-main
+  .Mypage-main__contents
+    %section.Payment
+      %h2.Payment__head 支払い情報
+      .Payment__inner
+        %section.creditcard_section
+          .container
+            - if current_user.card
+              = link_to "クレジットカード情報詳細", card_path(@card.id), method: :get, class: 'Payment__inner__add-btn'
+            - else
+              = link_to new_card_path, class: 'Payment__inner__add-btn' do
+                -# = icon('far', 'credit-card')    -#プルダウンの矢印表示（追って実装）
+                クレジットカードを登録する
+
+

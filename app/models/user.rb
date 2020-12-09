@@ -11,6 +11,8 @@ class User < ApplicationRecord
   validates :firstname_furigana, presence: true, format: { with: /\A([ァ-ン]|ー)+\z/, message: "全角カタカナのみが使用できます"}
   validates :date, presence: true
 
-
   has_one :address
+
+  has_one :card    #クレカ情報とのassociation設定
+
 end
