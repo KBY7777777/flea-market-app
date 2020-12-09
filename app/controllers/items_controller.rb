@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
   
   def index
     @items = Item.all
+    # @purchase = Purchase.where(item_id:@item.id)
   end
 
   def purchase
@@ -69,6 +70,7 @@ class ItemsController < ApplicationController
     @grandchild = Category.find(@items.category_id)
     @child = @grandchild.parent
     @parent = @child.parent
+    @purchase = Purchase.where(item_id:@items.id)
   end
 
   def destroy
