@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
     @child_category = @grandchild_category.parent
     @category_parent = @child_category.parent
     #カテゴリー一覧を作成
-    @category = Category.find(params[:id])
+    # @category = Category.find(params[:id])    #このインスタンス生成は不要とわかったので削除（アプリ動作に影響なし）
     # 紐づく孫カテゴリーの親（子カテゴリー）の一覧を配列で取得
     @category_children = @item.category.parent.parent.children
     # 紐づく孫カテゴリーの一覧を配列で取得
