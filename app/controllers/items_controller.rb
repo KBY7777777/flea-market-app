@@ -6,7 +6,6 @@ class ItemsController < ApplicationController
   
   def index
     @items = Item.all
-    # @purchase = Purchase.where(item_id:@item.id)
   end
 
   def purchase
