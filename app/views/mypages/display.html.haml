@@ -12,9 +12,27 @@
       - @items.each do |item| 
         .Tab-Content
           = link_to item_path(item.id) ,class:"Tab" do
-            .Tab-Content__Image
-              =image_tag "#{item.item_images[0].url}",class:"Box-Image"
-            .Tab-Content__title= item.item_name
+            -if Purchase.where(item_id:item.id).present?
+              .Sold-Out-display
+                Sold out
+              .Tab-Content__Image
+                =image_tag "#{item.item_images[0].url}",class:"Box-Image"
+              .Tab-Content__title
+                = item.item_name
+                .Box__price
+                  = item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse
+                  円
+            -else
+              .Tab-Content__Image
+                =image_tag "#{item.item_images[0].url}",class:"Box-Image"
+              .Tab-Content__title
+                = item.item_name
+                .Box__price
+                  = item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse
+                  円
+            -# .Tab-Content__Image
+            -#   =image_tag "#{item.item_images[0].url}",class:"Box-Image"
+            -# .Tab-Content__title= item.item_name
     
   %footer.Single-Footer
 
