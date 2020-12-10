@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   
   
   def index
-    @items = Item.all
+    @items = Item.all.order("created_at DESC").limit(5)
   end
 
   def purchase
@@ -78,6 +78,10 @@ class ItemsController < ApplicationController
     else
       render :show
     end
+  end
+
+  def display
+    @items = Item.all
   end
 
   private
