@@ -70,14 +70,16 @@
               %li#Like-Btn.Optional-Btn.Like-Btn
                 %i.fa.fa-star
                 お気に入り 10
-          -if user_signed_in? && current_user.id == @items.user_id
+          -if @purchase.present?
+            %a.item-buy-btn.soldout-btn
+              売り切れました  
+            = link_to item_path(@items), method: :delete, class: "item-buy-btn" do
+              削除 
+          -elsif user_signed_in? && current_user.id == @items.user_id
             = link_to edit_item_path(@items), class: "item-buy-btn" do
               編集
             = link_to item_path(@items), method: :delete, class: "item-buy-btn" do
-              削除
-          -elsif @purchase.present?
-            %a.item-buy-btn.soldout-btn
-              売り切れました   
+              削除  
           - else
             = link_to new_item_purchase_path(@items), class: "item-buy-btn" do
               購入画面に進む
