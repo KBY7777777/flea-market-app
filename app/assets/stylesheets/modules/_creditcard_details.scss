@@ -25,8 +25,8 @@
 
         &__add-btn {
           text-decoration: none;
-          width: 100%;
-          display: block;
+          width: 30%;
+          display: inline-block;
           background-color: #3CCACE;
           border: 1px solid #3CCACE;
           border-radius: 4px;
@@ -34,8 +34,16 @@
           line-height: 48px;
           font-size: 14px;
           text-align: center;
+          margin:0 5px 20px 5px;
         }
+        
+        
       }
+    }
+
+    .card-delete-btn{
+      background-color: #ea352d ;
+      border: 0
     }
 
     .Register {
