@@ -1,3 +1,8 @@
+%header.Header
+
+  -#Header部分（部分テンプレートで参照）
+  = render partial: "/layouts/main-header"
+
 .Item-Box-Container
   .Item-Main-Content
     .Content-Leftqq
@@ -140,3 +145,6 @@
                       %i.fa.fa-star.likeIcon
                       4
                   %p (税込)
+
+-#Banner部分+Footer部分（部分テンプレートで参照）
+= render partial: "/layouts/main-footer"
