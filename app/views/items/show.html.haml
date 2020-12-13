@@ -80,13 +80,17 @@
               %a.item-buy-btn.soldout-btn
                 売り切れました  
           - else    #当該itemがまだ販売中の場合
-            -if user_signed_in? && current_user.id == @items.user_id    #閲覧者がログイン中の出品者本人の場合
-              = link_to edit_item_path(@items), class: "item-buy-btn" do
-                編集
-              = link_to item_path(@items), method: :delete, class: "item-buy-btn" do
-                削除  
+            -if user_signed_in?
+              -if current_user.id == @items.user_id    #閲覧者がログイン中の出品者本人の場合
+                = link_to edit_item_path(@items), class: "item-buy-btn" do
+                  編集
+                = link_to item_path(@items), method: :delete, class: "item-buy-btn" do
+                  削除  
+              - else
+                = link_to new_item_purchase_path(@items), class: "item-buy-btn" do
+                  購入画面に進む
             - else    #閲覧者が出品者本人でない場合、あるいはログアウト状態の場合
-              = link_to new_item_purchase_path(@items), class: "item-buy-btn" do
+              = link_to new_user_session_path, class: "item-buy-btn" do
                 購入画面に進む
 
             %ul
