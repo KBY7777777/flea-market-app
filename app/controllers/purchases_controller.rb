@@ -1,6 +1,8 @@
 class PurchasesController < ApplicationController
   require 'payjp'
   before_action :set_card, :set_item
+  before_action :move_to_index, only: [:new]
+  before_action :move_to_show, only: [:new]
 
   def new
     @purchase = Purchase.new
@@ -46,4 +48,17 @@ class PurchasesController < ApplicationController
   def set_item
     @item = Item.find(params[:item_id])
   end
+
+  def move_to_index
+    if user_signed_in? && current_user.id == @item.user_id
+      redirect_to item_path(@item.id)
+    end
+  end
+
+  def move_to_show
+    if @item.purchase.present?
+      redirect_to item_path(@item.id)
+    end
+  end
+
 end

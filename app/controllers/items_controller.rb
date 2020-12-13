@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_category, only: [:new, :create, :sell, :edit, :update]
   before_action :set_item, only: [:show, :destroy]
   before_action :edit_item, only: [:edit, :update]
+  before_action :move_to_index, only: [:edit, :update]
   
   
   def index
@@ -100,6 +101,12 @@ class ItemsController < ApplicationController
 
   def edit_item
     @item = Item.find(params[:id])
+  end
+
+  def move_to_index
+    unless user_signed_in? && current_user.id == @item.user_id
+      redirect_to item_path(@item.id)
+    end
   end
 
 end
