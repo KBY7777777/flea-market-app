@@ -11,6 +11,7 @@
       text-align: center;
       margin: 0 auto;
       font-size: 24px;
+      font-weight: 600;
     }
   }
   .Display-Item{
@@ -31,6 +32,14 @@
     }
    }
 }
+
+.display_name{
+  font-size: 32px;
+  color:   #3CCACE;
+  // color:#fbd604;
+}
+
+
 
 .Box-Image{
   width: 100%;
@@ -54,13 +63,14 @@
 
 .Tab-Content{
   position: relative;
+  padding-left: 5px;
 }
 
 .Display-Box{
   display: inline-block;
   width: 120px;
   height: 150px;
-  margin-left: 14px;
+  margin-left: 12px;
   margin-bottom: 20px;
   text-align: center;
 }
