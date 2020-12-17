@@ -5,8 +5,10 @@
   .Product-Listings
     .Product-Listing.Display-Title-Box
       %h2.Display-Title-Name
-        = @nickname
-        さんの出品中の商品
+        =current_user.nickname
+        さんの
+        %span.display_name 出品中
+        の商品
     %hr.Product-Listing-UnderLine
     .Display-Item
       - @items.each do |item| 
@@ -30,9 +32,6 @@
                 .Box__price
                   = item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse
                   円
-            -# .Tab-Content__Image
-            -#   =image_tag "#{item.item_images[0].url}",class:"Box-Image"
-            -# .Tab-Content__title= item.item_name
     
   %footer.Single-Footer
 
