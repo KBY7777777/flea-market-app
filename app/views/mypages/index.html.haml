@@ -22,11 +22,19 @@
           %h2.bold=current_user.nickname
           .MypageNumber
             %div
-              評価
-              %span.bold 1234
-            %div
               出品数
-              %span.bold 567
+              %span.bold 
+                = @display_counts
+            %div
+              購入数
+              %span.bold 
+                = @buy_counts
+            -# %div
+            -#   評価
+            -#   %span.bold 1234
+            -# %div
+            -#   出品数
+            -#   %span.bold 567
 
     -#メニューバー部分
     .L-Side
@@ -62,24 +70,24 @@
                 %i.icon-arrow-right
             %li
               = link_to display_mypages_path, class: "MypageNavListItem" do
-                出品した商品 - 出品中
+                出品した商品 一覧
                 %i.icon-arrow-right
+            -# %li
+            -#   = link_to "#", class: "MypageNavListItem" do
+            -#     出品した商品 - 取引中
+            -#     %i.icon-arrow-right
+            -# %li
+            -#   = link_to "#", class: "MypageNavListItem" do
+            -#     出品した商品 - 売却済み
+            -#     %i.icon-arrow-right
             %li
-              = link_to "#", class: "MypageNavListItem" do
-                出品した商品 - 取引中
+              = link_to buy_display_mypages_path, class: "MypageNavListItem" do
+                購入した商品 一覧
                 %i.icon-arrow-right
-            %li
-              = link_to "#", class: "MypageNavListItem" do
-                出品した商品 - 売却済み
-                %i.icon-arrow-right
-            %li
-              = link_to "#", class: "MypageNavListItem" do
-                購入した商品 - 取引中
-                %i.icon-arrow-right
-            %li
-              = link_to "#", class: "MypageNavListItem" do
-                購入した商品 - 過去の取引
-                %i.icon-arrow-right
+            -# %li
+            -#   = link_to "#", class: "MypageNavListItem" do
+            -#     購入した商品 - 取引中
+            -#     %i.icon-arrow-right
             %li
               = link_to "#", class: "MypageNavListItem" do
                 ニュース一覧
