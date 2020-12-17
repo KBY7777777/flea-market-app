@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates :date, presence: true
 
   has_one :address
-
-  has_one :card    #クレカ情報とのassociation設定
-
+  has_many :items
+  has_one :card, dependent: :destroy    #クレカ情報とのassociation設定
+  has_many :purchases
 end
