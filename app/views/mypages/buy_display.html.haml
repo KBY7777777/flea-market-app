@@ -1,0 +1,32 @@
+.Multiple-Container
+
+  = render partial: "/layouts/userheader"
+    
+  .Product-Listings
+    .Product-Listing.Display-Title-Box
+      %h2.Display-Title-Name
+        =current_user.nickname
+        さんの
+        %span.display_name 購入
+        した商品
+    %hr.Product-Listing-UnderLine
+    .Display-Item
+      - @purchases = Purchase.where(user:current_user)
+      - @purchases.each do |purchase|  
+        - @items = Item.where(id:purchase.item_id)
+        - @items.each do |item| 
+          .Tab-Content
+            = link_to item_path(item.id) ,class:"Tab" do
+              .Tab-Content__Image
+                =image_tag "#{item.item_images[0].url}",class:"Box-Image"
+              .Tab-Content__title
+                = item.item_name
+                .Box__price
+                  = item.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse
+                  円  
+     
+  %footer.Single-Footer
+
+    = render partial: "/layouts/userfooter"
+  
+
