@@ -36,6 +36,7 @@ Rails.application.routes.draw do
       get 'creditcard'
       get 'logout'
       get 'payment'
+      get 'buy_display'
     end
   end
 
